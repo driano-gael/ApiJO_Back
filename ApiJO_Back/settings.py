@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from decouple import config
 
@@ -78,20 +78,14 @@ WSGI_APPLICATION = 'ApiJO_Back.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'apiJO',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'Pnattybre1zh',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432',
-    # }
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': config('DATABASE_NAME'),
             'USER': config('DATABASE_USER'),
             'PASSWORD': config('DATABASE_PASSWORD'),
-            'HOST': 'localhost',
+            # 'HOST': 'localhost',
+            # 'HOST': 'host.docker.internal',
+            'HOST': '127.0.0.1',
             'PORT': '5432',
     }
 }
@@ -132,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
