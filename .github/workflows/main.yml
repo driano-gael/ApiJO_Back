@@ -35,6 +35,16 @@ jobs:
             docker rm apijo || true
             cd ~/apps/ApiJO_Back
             docker build --no-cache -t apijo .
-            docker run -d --name apijo --network host apijo
+            docker run -d --name apijo --network host --restart unless-stopped apijo
             docker image prune -af
           EOF
+
+      - name: etape 5 Vérification de l'API
+        run: |
+          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
+            # Attendre quelques secondes que le container démarre
+            sleep 10
+            # Tester l'accès à l'API
+            curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/api/lieu/ || exit 1
+          EOF
+        continue-on-error: false
