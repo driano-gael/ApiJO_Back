@@ -31,10 +31,9 @@ jobs:
       - name: etape 4 Gestion Docker
         run: |
           ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
-            docker stop Apijo || true
-            docker rm Apijo || true
+            docker stop apijo || true
+            docker rm apijo || true
             cd ~/apps/ApiJO_Back
-            docker build -t Apijo .
-            docker run -d --name Apijo -p 3000:3000 Apijo
+            docker build -t apijo .
+            docker run -d --name apijo -p 3000:3000 apijo
           EOF
-          
