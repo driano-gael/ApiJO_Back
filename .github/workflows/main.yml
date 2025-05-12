@@ -25,15 +25,16 @@ jobs:
             cd ~/apps/ApiJO_Back
             git checkout main
             git pull origin main
-            git pull origin main
           EOF
 
       - name: etape 4 Gestion Docker
         run: |
           ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
+            systemctl is-active docker || sudo systemctl start docker
             docker stop apijo || true
             docker rm apijo || true
             cd ~/apps/ApiJO_Back
             docker build --no-cache -t apijo .
             docker run -d --name apijo --network host apijo
+            docker image prune -af
           EOF
