@@ -37,3 +37,4 @@ jobs:
             docker build -t Apijo .
             docker run -d --name Apijo -p 3000:3000 Apijo
           EOF
+          
