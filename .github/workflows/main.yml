@@ -35,5 +35,5 @@ jobs:
             docker rm apijo || true
             cd ~/apps/ApiJO_Back
             docker build --no-cache -t apijo .
-            docker run -d --name apijo -p 8000:8000 apijo
+            docker run -d --name apijo --network host apijo
           EOF
