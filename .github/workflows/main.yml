@@ -34,6 +34,6 @@ jobs:
             docker stop apijo || true
             docker rm apijo || true
             cd ~/apps/ApiJO_Back
-            docker build -t apijo .
-            docker run -d --name apijo -p 3000:3000 apijo
+            docker build --no-cache -t apijo .
+            docker run -d --name apijo -p 8000:8000 apijo
           EOF
