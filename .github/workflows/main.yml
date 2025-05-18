@@ -6,6 +6,18 @@ on:
       - main
 
 jobs:
+  test:
+    name: Tester l'application
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          python manage.py test -v 2
+
+jobs:
   deploy:
     name: Deployer sur le serveur
     runs-on: ubuntu-latest
