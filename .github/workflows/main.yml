@@ -9,8 +9,28 @@ jobs:
   test:
     name: Tester l'application
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: 'testuser'
+          POSTGRES_PASSWORD: 'testpass'
+          POSTGRES_DB: 'testdb'
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
-      DEBUG: "False"
+      DATABASE_NAME: "testdb"
+      DATABASE_USER: "testuser"
+      DATABASE_PASSWORD: "testpass"
+      DATABASE_HOST: "localhost"
+      DATABASE_PORT: "5432"
+      DEBUG: "True"
       ALLOWED_HOSTS: "127.0.0.1,localhost"
     steps:
       - uses: actions/checkout@v3
