@@ -1,4 +1,4 @@
-name: Deploiement API en Production
+name: Deploy to Ubuntu Server
 
 on:
   push:
@@ -6,80 +6,25 @@ on:
       - main
 
 jobs:
-  test:
-    name: Tester l'application
-    runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_USER: 'testuser'
-          POSTGRES_PASSWORD: 'testpass'
-          POSTGRES_DB: 'testdb'
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      DATABASE_NAME: "testdb"
-      DATABASE_USER: "testuser"
-      DATABASE_PASSWORD: "testpass"
-      DATABASE_HOST: "localhost"
-      DATABASE_PORT: "5432"
-      DEBUG: "True"
-      ALLOWED_HOSTS: "127.0.0.1,localhost"
-    steps:
-      - uses: actions/checkout@v3
-      - run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
-          export SECRET_KEY="${{ secrets.SECRET_KEY }}"
-          python manage.py test -v 2
-
   deploy:
-    name: Deployer sur le serveur
     runs-on: ubuntu-latest
 
     steps:
-      - name: etape 1 recupération du code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: etape 2 connexion SSH au serveur
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: etape 3 Pull sur serveur
-        run: |
-          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
-            cd ~/apps/ApiJO_Back
-            git checkout main
-            git pull origin main
-          EOF
-
-      - name: etape 4 Gestion Docker
-        run: |
-          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
-            systemctl is-active docker || sudo systemctl start docker
-            docker stop apijo || true
-            docker rm apijo || true
-            cd ~/apps/ApiJO_Back
-            docker build --no-cache -t apijo .
-            docker run -d --name apijo --network host --restart unless-stopped apijo
-            docker image prune -af
-          EOF
-
-      - name: etape 5 Vérification de l'API
-        run: |
-          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
-            # Attendre quelques secondes que le container démarre
-            sleep 10
-            # Tester l'accès à l'API
-            curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/api/lieu/ || exit 1
-          EOF
-        continue-on-error: false
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        port: 22
+        script: |
+          cd ~/apps/ApiJO_Back
+          git pull origin main
+          source .venv/bin/activate
+          pip install -r requirements.txt
+          python3 manage.py migrate
+          python3 manage.py collectstatic --noinput
+          sudo systemctl restart gunicorn_api
