@@ -10,7 +10,7 @@ class ClientRegistrationTests(APITestCase):
         self.url = reverse('register-client')
         self.valid_data = {
             'email': 'client@example.com',
-            'password': 'strongpassword123',
+            'password': 'Strongpassword123#',
             'nom': 'Dupont',
             'prenom': 'Jean',
             'telephone': '0601020304'

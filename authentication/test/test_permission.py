@@ -43,7 +43,7 @@ class EmployeePermissionTests(APITestCase):
 
         data = {
             "email": "newemp@example.com",
-            "password": "StrongPass123",
+            "password": "StrongPass123#",
             "nom": "Test",
             "prenom": "User",
             "matricule": "EMP999",

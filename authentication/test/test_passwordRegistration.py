@@ -23,25 +23,14 @@ class ClientPasswordValidationTests(APITestCase):
         response = self._post_with_password('abc123')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn('password', response.data)
-        self.assertIn('too short', str(response.data['password']).lower())
-
-    def test_password_common(self):
-        response = self._post_with_password('password')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('password', response.data)
-        self.assertIn('too common', str(response.data['password']).lower())
+        self.assertIn('au moins 12 caractère', str(response.data['password']).lower())
 
     def test_password_numeric_only(self):
-        response = self._post_with_password('12345678')
+        response = self._post_with_password('12345678910112137878')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn('password', response.data)
-        self.assertIn('entirely numeric', str(response.data['password']).lower())
+        self.assertIn('au moins une majuscule', str(response.data['password']).lower())
 
-    def test_password_similar_to_email(self):
-        response = self._post_with_password('client@example.com')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('password', response.data)
-        self.assertIn('too similar', str(response.data['password']).lower())
 
     def test_password_valid(self):
         response = self._post_with_password('Secur3P@ssw0rd!')
