@@ -3,4 +3,8 @@ from .client import ClientProfile
 from .admin import AdminProfile
 from .employe import EmployeProfile
 
-__all__ = ['User', 'ClientProfile', 'AdminProfile', 'EmployeProfile']
+__all__ = ['User',
+           'ClientProfile',
+           'AdminProfile',
+           'EmployeProfile',
+           ]

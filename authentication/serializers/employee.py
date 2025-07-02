@@ -14,11 +14,9 @@ class EmployeeRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EmployeProfile
-        # Ici, on liste uniquement les champs qui existent dans EmployeProfile et ceux définis explicitement
         fields = ['email', 'password', 'nom', 'prenom', 'matricule', 'identifiant_telephone']
 
     def validate_email(self, value):
-        # Vérifie si l'email existe déjà
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError("Un utilisateur avec cet email existe déjà.")
         return value
@@ -43,7 +41,6 @@ class EmployeeRegisterSerializer(serializers.ModelSerializer):
             role='employe'
         )
 
-        # Création du profil employé lié
         employe_profile = EmployeProfile.objects.create(
             user=user,
             nom=nom,
