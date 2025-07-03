@@ -63,6 +63,5 @@ jobs:
               git reset --hard origin/main
               source .venv/bin/activate
               pip install -r requirements.txt
-#              python manage.py makemigrations --noinput
               python manage.py migrate --noinput
               sudo systemctl restart gunicorn_api
