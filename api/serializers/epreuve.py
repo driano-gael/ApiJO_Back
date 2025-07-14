@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from api.models import Epreuve, Discipline, Evenement
 from api.serializers.discipline import DisciplineSerializer
-from api.serializers.evenement import EvenementSerializer
-
+from api.serializers.nested_serializer import NestedEvenementSerializer
 
 
 class EpreuveSerializer(serializers.ModelSerializer):
@@ -12,7 +11,7 @@ class EpreuveSerializer(serializers.ModelSerializer):
         write_only=True,
         source='discipline',
     )
-    evenement = EvenementSerializer(read_only=True)
+    evenement = NestedEvenementSerializer(read_only=True)
     evenement_id = serializers.PrimaryKeyRelatedField(
         queryset=Evenement.objects.all(),
         write_only=True,
