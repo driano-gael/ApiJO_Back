@@ -1,4 +1,5 @@
 import rest_framework.generics
+from django.db.models import Q
 from api.models.discipline import Discipline
 from api.serializers.discipline import DisciplineSerializer
 from authentication.permissions import *
@@ -6,9 +7,17 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class DisciplineListView(rest_framework.generics.ListAPIView):
-    queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
     permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        queryset = Discipline.objects.all()
+        search = self.request.GET.get('search', None)
+        if search is not None:
+            queryset = queryset.filter(
+                Q(nom__istartswith=search)
+            )
+        return queryset.order_by('nom')
 
 class DisciplineDetailView(rest_framework.generics.RetrieveAPIView):
     queryset = Discipline.objects.all()

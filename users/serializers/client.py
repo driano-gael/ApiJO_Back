@@ -8,5 +8,4 @@ class ClientSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'user', 'cle_chiffree']
 
     def create(self, validated_data):
-        # la clé chiffrée est générée dans le modèle lors du save()
         return super().create(validated_data)

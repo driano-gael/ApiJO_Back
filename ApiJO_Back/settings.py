@@ -12,9 +12,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+from datetime import timedelta, datetime
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+def parse_duration(hms_string):
+    t = datetime.strptime(hms_string, "%H:%M:%S")
+    return timedelta(hours=t.hour, minutes=t.minute, seconds=t.second)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,6 +52,13 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'authentication.apps.AuthenticationConfig',
 ]
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': parse_duration(config('ACCESS_TOKEN_LIFETIME')),
+    'REFRESH_TOKEN_LIFETIME': parse_duration(config('REFRESH_TOKEN_LIFETIME')),
+    'ROTATE_REFRESH_TOKENS': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+}
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
