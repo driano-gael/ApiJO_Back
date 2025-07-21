@@ -16,7 +16,21 @@ class EpreuveSerializer(serializers.ModelSerializer):
         queryset=Evenement.objects.all(),
         write_only=True,
         source='evenement',
+        required=False,
+        allow_null=True,
     )
+    def validate(self, data):
+        discipline = data.get('discipline') or self.instance.discipline
+        libelle = data.get('libelle') or self.instance.libelle
+
+        if Epreuve.objects.exclude(pk=self.instance.pk if self.instance else None).filter(
+            libelle=libelle,
+            discipline=discipline
+        ).exists():
+            raise serializers.ValidationError(
+                "Une épreuve avec ce libellé existe déjà pour cette discipline."
+            )
+        return data
     class Meta:
         model = Epreuve
         fields = ['id', 'libelle', 'discipline', 'evenement', 'discipline_id', 'evenement_id']
