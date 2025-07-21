@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from api.models import Evenement, Lieu, Epreuve
 from api.serializers.lieu import LieuSerializer
-from api.serializers.nested_serializer import NestedEpreuveSerializer
+from api.serializers.epreuve import EpreuveSerializer
 
 
 class EvenementSerializer(serializers.ModelSerializer):
-    epreuves = NestedEpreuveSerializer(many=True, read_only=True)
+    epreuves = EpreuveSerializer(many=True, read_only=True)
     epreuve_ids = serializers.PrimaryKeyRelatedField(
         queryset=Epreuve.objects.filter(evenement__isnull=True),
         many=True,

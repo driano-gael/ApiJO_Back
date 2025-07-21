@@ -5,7 +5,7 @@ from api.models.evenement import Evenement
 class NestedEpreuveSerializer(serializers.ModelSerializer):
     class Meta:
         model = Epreuve
-        fields = ['id', 'libelle']
+        fields = ['id', 'libelle', 'discipline']
 
 class NestedEvenementSerializer(serializers.ModelSerializer):
     class Meta:
