@@ -7,11 +7,11 @@ from api.serializers.epreuve import EpreuveSerializer
 class EvenementSerializer(serializers.ModelSerializer):
     epreuves = EpreuveSerializer(many=True, read_only=True)
     epreuve_ids = serializers.PrimaryKeyRelatedField(
-        queryset=Epreuve.objects.filter(evenement__isnull=True),
+        queryset=Epreuve.objects.all(),
         many=True,
         write_only=True,
         source='epreuves',
-        required=True
+        required=False
     )
     lieu = LieuSerializer(read_only=True)
     lieu_id = serializers.PrimaryKeyRelatedField(
@@ -22,11 +22,19 @@ class EvenementSerializer(serializers.ModelSerializer):
 
     def validate_epreuve_ids(self, value):
         if not value:
-            raise serializers.ValidationError("Un événement doit avoir au moins une épreuve.")
-        conflits = [e for e in value if e.evenement_id is not None]
+            return value
+
+        # Vérifier les conflits en excluant l'événement actuel (si modification)
+        instance_id = self.instance.id if self.instance else None
+        conflits = []
+
+        for epreuve in value:
+            if epreuve.evenement_id is not None and epreuve.evenement_id != instance_id:
+                conflits.append(epreuve)
+
         if conflits:
             raise serializers.ValidationError(
-                f"Les épreuves suivantes sont déjà assignées : {[e.id for e in conflits]}"
+                f"Les épreuves suivantes sont déjà assignées à d'autres événements : {[e.id for e in conflits]}"
             )
         return value
 
