@@ -33,4 +33,11 @@ class EpreuveSerializer(serializers.ModelSerializer):
         return data
     class Meta:
         model = Epreuve
-        fields = ['id', 'libelle', 'discipline', 'evenement', 'discipline_id', 'evenement_id']
+        fields = ['id',
+                  'libelle',
+                  'discipline',
+                  'evenement',
+                  'discipline_id',
+                  'evenement_id',
+                  'genre',
+                  'tour']
