@@ -122,29 +122,29 @@ class Command(BaseCommand):
                 {"libelle": "Poids léger", "genre": "femmes", "tour": "finale"},
                 {"libelle": "Double poids léger", "genre": "mixte", "tour": "finale"}
             ],
-            "Basketball": [
-                {"libelle": "Match", "genre": "hommes", "tour": "groupe"},
-                {"libelle": "Match", "genre": "femmes", "tour": "groupe"},
-                {"libelle": "Match", "genre": "mixte", "tour": "poule"},
-                {"libelle": "Match", "genre": "mixte", "tour": "quart"},
-                {"libelle": "Match", "genre": "mixte", "tour": "demi"},
-                {"libelle": "Match", "genre": "mixte", "tour": "finale"},
-                {"libelle": "Match", "genre": "mixte", "tour": "classement"},
-                {"libelle": "3x3", "genre": "mixte", "tour": "finale"},
-                {"libelle": "fauteuil", "genre": "mixte", "tour": "finale"},
-                {"libelle": "Match", "genre": "mixte", "tour": "finale"}
+            "Tir à l'arc": [
+                {"libelle": "Tir à 70m", "genre": "hommes", "tour": "qualification"},
+                {"libelle": "Tir à 70m", "genre": "femmes", "tour": "qualification"},
+                {"libelle": "Match à élimination directe", "genre": "hommes", "tour": "1/16"},
+                {"libelle": "Match à élimination directe", "genre": "femmes", "tour": "1/16"},
+                {"libelle": "Quart de finale", "genre": "hommes", "tour": "quart"},
+                {"libelle": "Quart de finale", "genre": "femmes", "tour": "quart"},
+                {"libelle": "Demi-finale", "genre": "hommes", "tour": "demi"},
+                {"libelle": "Demi-finale", "genre": "femmes", "tour": "demi"},
+                {"libelle": "Finale", "genre": "hommes", "tour": "finale"},
+                {"libelle": "Finale", "genre": "femmes", "tour": "finale"}
             ],
-            "Handball": [
-                {"libelle": "Match", "genre": "hommes", "tour": "groupe"},
-                {"libelle": "Match", "genre": "femmes", "tour": "groupe"},
-                {"libelle": "Demi-finale", "genre": "mixte", "tour": "demi"},
-                {"libelle": "Finale", "genre": "mixte", "tour": "finale"},
-                {"libelle": "Petite finale", "genre": "mixte", "tour": "classement"},
-                {"libelle": "Handball fauteuil", "genre": "mixte", "tour": "finale"},
-                {"libelle": "Tour préliminaire", "genre": "mixte", "tour": "préliminaire"},
-                {"libelle": "Tour principal", "genre": "mixte", "tour": "principal"},
-                {"libelle": "1/4 de finale", "genre": "mixte", "tour": "quart"},
-                {"libelle": "Match", "genre": "mixte", "tour": "finale"}
+            "Volley-ball": [
+                {"libelle": "Match de poule", "genre": "hommes", "tour": "poule"},
+                {"libelle": "Match de poule", "genre": "femmes", "tour": "poule"},
+                {"libelle": "Quart de finale", "genre": "hommes", "tour": "quart"},
+                {"libelle": "Quart de finale", "genre": "femmes", "tour": "quart"},
+                {"libelle": "Demi-finale", "genre": "hommes", "tour": "demi"},
+                {"libelle": "Demi-finale", "genre": "femmes", "tour": "demi"},
+                {"libelle": "Finale", "genre": "hommes", "tour": "finale"},
+                {"libelle": "Finale", "genre": "femmes", "tour": "finale"},
+                {"libelle": "Volley 3x3", "genre": "mixte", "tour": "finale"},
+                {"libelle": "Volley fauteuil", "genre": "mixte", "tour": "finale"}
             ],
             "Tennis": [
                 {"libelle": "Simple", "genre": "hommes", "tour": "1er tour"},
