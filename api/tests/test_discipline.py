@@ -17,9 +17,9 @@ class DisciplineModelTest(TestCase):
 
 class DisciplineSerializerTest(TestCase):
     def test_serializer_content(self):
-        discipline = Discipline.objects.create(nom="tennis")
+        discipline = Discipline.objects.create(nom="tennis", icone="aaa")
         serializer = DisciplineSerializer(instance=discipline)
-        self.assertEqual(serializer.data, {'id': discipline.id, 'nom': "tennis"})
+        self.assertEqual(serializer.data, {'id': discipline.id, 'nom': "tennis", 'icone': "aaa"})
 
 # ---------- API ----------
 class DisciplineAPITest(TestCase):
