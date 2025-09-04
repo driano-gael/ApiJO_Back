@@ -12,7 +12,7 @@ class NestedEpreuveSerializer(serializers.ModelSerializer):
         fields = ['id', 'libelle', 'discipline']
 
 class NestedEvenementSerializer(serializers.ModelSerializer):
-    lieu = LieuSerializer(read_only=True)  # ici, nested serializer
+    lieu = LieuSerializer(read_only=True)
     lieu_id = serializers.PrimaryKeyRelatedField(
         queryset=Lieu.objects.all(),
         write_only=True,
