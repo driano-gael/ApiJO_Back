@@ -21,7 +21,7 @@ class Command(BaseCommand):
         ]
 
         disciplines_data = {
-            "Athlétisme": ["100m hommes", "100m femmes", "200m hommes", "200m femmes", "Marathon", "Saut en longueur", "Lancer de poids", "Relais 4x100m", "110m haies", "400m"] ,
+            "Athlétisme": ["100m", "100m femmes", "200m hommes", "200m femmes", "Marathon", "Saut en longueur", "Lancer de poids", "Relais 4x100m", "110m haies", "400m"] ,
             "Natation": ["100m nage libre hommes", "100m nage libre femmes", "200m brasse", "Relais 4x100", "Dos 100m", "Papillon 200m", "400m nage libre", "800m nage libre", "4x200m", "100m papillon"] ,
             "Gymnastique": ["Sol hommes", "Sol femmes", "Barres parallèles", "Barres asymétriques", "Saut de cheval", "Anneaux", "Poutre", "Cheval d'arçon", "Concours général", "Trampoline"] ,
             "Escrime": ["Fleuret hommes", "Fleuret femmes", "Sabre", "Epée", "Individuel", "Par équipe", "Sabre femmes", "Epée hommes", "Fleuret équipe", "Sabre équipe"] ,

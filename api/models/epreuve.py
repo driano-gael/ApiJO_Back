@@ -12,7 +12,7 @@ class Epreuve(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['libelle', 'genre', 'discipline', 'evenement'], name='unique_epreuve_par_discipline_genre_et_evenement')
+            models.UniqueConstraint(fields=['libelle', 'genre', 'discipline',"tour", 'evenement'], name='unique_epreuve_par_discipline_genre_tour_et_evenement')
         ]
 
     def __str__(self):
