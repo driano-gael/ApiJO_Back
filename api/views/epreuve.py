@@ -6,7 +6,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class EpreuveListView(rest_framework.generics.ListAPIView):
-    queryset = Epreuve.objects.all()
+    queryset = Epreuve.objects.select_related("evenement", "discipline").order_by(
+        "discipline__nom","evenement__date", "evenement__horraire"
+    )
     serializer_class = EpreuveSerializer
     permission_classes = [AllowAny]
 
