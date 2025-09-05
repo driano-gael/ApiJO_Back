@@ -10,8 +10,8 @@ class Command(BaseCommand):
     help = 'Peuple la base de données avec des données JO (15 événements minimum)'
 
     def date_aleatoire(self):
-        date_start = date(2024, 7, 26)
-        delta = date(2024, 10, 10) - date_start
+        date_start = date(2026, 7, 26)
+        delta = date(2026, 8, 10) - date_start
         jours_aleatoires = random.randint(0, delta.days)
         return date_start + timedelta(days=jours_aleatoires)
 

@@ -20,6 +20,16 @@ class EvenementSerializer(serializers.ModelSerializer):
         source='lieu'
     )
 
+    class Meta:
+        model = Evenement
+        fields = [
+            'id', 'description',
+            'lieu', 'lieu_id',
+            'date', 'horraire',
+            'epreuves', 'epreuve_ids',
+            'nb_place_total', 'nb_place_restante'
+        ]
+
     def validate_epreuve_ids(self, value):
         if not value:
             return value
@@ -68,11 +78,4 @@ class EvenementSerializer(serializers.ModelSerializer):
 
         return instance
 
-    class Meta:
-        model = Evenement
-        fields = [
-            'id', 'description',
-            'lieu', 'lieu_id',
-            'date', 'horraire',
-            'epreuves', 'epreuve_ids'
-        ]
+

@@ -3,6 +3,7 @@ from api.views.lieu import *
 from api.views.discipline import *
 from api.views.epreuve import *
 from api.views.evenement import *
+from api.views.offre import *
 
 urlpatterns = [
 
@@ -33,4 +34,11 @@ urlpatterns = [
     path('evenement/create/', EvenementCreateView.as_view(), name='evenement-create'),
     path('evenement/update/<int:pk>/', EvenementUpdateView.as_view(), name='evenement-update'),
     path('evenement/delete/<int:pk>/', EvenementDeleteView.as_view(), name='evenement-delete'),
+
+    # OFFRE
+    path('offre/', OffreListView.as_view(), name='offre-list'),
+    path('offre/<int:pk>/', OffreDetailView.as_view(), name='offre-detail'),
+    path('offre/create/', OffreCreateView.as_view(), name='offre-create'),
+    path('offre/update/<int:pk>/', OffreUpdateView.as_view(), name='offre-update'),
+    path('offre/delete/<int:pk>/', OffreDeleteView.as_view(), name='offre-delete'),
 ]
