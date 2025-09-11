@@ -31,6 +31,7 @@ urlpatterns = [
     #EVENEMENT
     path('evenement/', EvenementListView.as_view(), name='evenement-list'),
     path('evenement/<int:pk>/', EvenementDetailView.as_view(), name='evenement-detail'),
+    path('evenement/by-epreuve/<int:pk>/', EvenementByEpreuveView.as_view(), name='evenement-by-epreuve'),
     path('evenement/create/', EvenementCreateView.as_view(), name='evenement-create'),
     path('evenement/update/<int:pk>/', EvenementUpdateView.as_view(), name='evenement-update'),
     path('evenement/delete/<int:pk>/', EvenementDeleteView.as_view(), name='evenement-delete'),
