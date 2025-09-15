@@ -183,11 +183,20 @@ class Command(BaseCommand):
 
             # Créer l'événement
             lieu = random.choice(lieux)
+            nb_place = random.randint(1000, 5000)
+            chance_to_zero_place = random.randint(0, 5)
+            if chance_to_zero_place > 2:
+                place_restantes = random.randint(0, nb_place)
+            else:
+                place_restantes = 0
             evenement = Evenement.objects.create(
                 description=f"{nom_disc} - Événement {evenements_crees + 1}",
                 date=self.date_aleatoire(),
                 horraire=self.heure_aleatoire(),
-                lieu=lieu
+                lieu=lieu,
+                nb_place_total= nb_place,
+                nb_place_restante= place_restantes
+
             )
 
             # Créer les épreuves tout en respectant la contrainte unique
