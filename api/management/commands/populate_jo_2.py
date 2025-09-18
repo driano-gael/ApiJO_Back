@@ -35,7 +35,19 @@ class Command(BaseCommand):
             "Grand Palais", "Château de Versailles", "Paris La Défense Arena",
             "Parc des Princes", "Le Bourget", "Trocadéro"
         ]
-
+        #logo
+        logo_data = {
+            "Athlétisme":"/images/sportSVG/ath.svg",
+            "Football":"/images/sportSVG/fbl.svg",
+            "Natation":"/images/sportSVG/swm.svg",
+            "Gymnastique":"/images/sportSVG/gry.svg",
+            "Escrime":"/images/sportSVG/fen.svg",
+            "Judo":"/images/sportSVG/jud.svg",
+            "Aviron":"/images/sportSVG/row.svg",
+            "Tir à l'arc":"/images/sportSVG/arc.svg",
+            "Volley-ball":"/images/sportSVG/volleyball.svg",
+            "Tennis":"/images/sportSVG/ten.svg"
+        }
         # ➡️ Nouvelle structure de données
         disciplines_data = {
             "Athlétisme": [
@@ -166,7 +178,7 @@ class Command(BaseCommand):
         self.stdout.write("Création des disciplines...")
         disciplines = {}
         for nom in disciplines_data.keys():
-            discipline = Discipline.objects.create(nom=nom)
+            discipline = Discipline.objects.create(nom=nom, icone=logo_data[nom])
             disciplines[nom] = discipline
 
         self.stdout.write("Création des événements et épreuves...")
