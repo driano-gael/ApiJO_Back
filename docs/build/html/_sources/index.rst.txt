@@ -39,7 +39,6 @@ L'API est construite avec Django REST Framework et utilise :
 
    guide/installation
    guide/configuration
-   guide/utilisation
 
 Indices et tables
 =================
