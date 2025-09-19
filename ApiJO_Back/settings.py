@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
     'authentication.apps.AuthenticationConfig',
+    # swagger
+    'drf_spectacular',
 ]
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': parse_duration(config('ACCESS_TOKEN_LIFETIME')),
@@ -79,6 +81,7 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 ROOT_URLCONF = 'ApiJO_Back.urls'
@@ -129,3 +132,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 APPEND_SLASH = True
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],  # ou ton dossier templates personnalisé
+        'APP_DIRS': True,  # <- doit être True pour trouver les templates des apps
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]

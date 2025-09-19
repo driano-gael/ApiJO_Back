@@ -1,292 +1,178 @@
-# Guide de Configuration de l'API ApiJO
+# Configuration
 
-Ce guide détaille toutes les options de configuration disponibles pour l'API ApiJO.
+Ce guide détaille la configuration de l'API ApiJO après installation.
 
-## Configuration de l'Environnement
+## Configuration Django
 
-### Variables d'Environnement (.env)
+### Fichier settings.py
 
-Toutes les configurations sensibles sont gérées via le fichier `.env`. Copiez `.env.example` en `.env` et personnalisez les valeurs.
+Les principaux paramètres à configurer dans ApiJO_Back/settings.py : les paramètres sont à configurer dans le .env
 
-#### Configuration Django
-```env
-DEBUG=True/False
-SECRET_KEY=votre-clé-secrète
-ALLOWED_HOSTS=127.0.0.1,localhost,votre-domaine.com
-```
+### Base de données
 
-- `DEBUG` : Active/désactive le mode debug
-- `SECRET_KEY` : Clé de sécurité Django (à changer en production)
-- `ALLOWED_HOSTS` : Liste des hôtes autorisés, séparés par des virgules
+Modification du moteur de Base de données si nécessaire (PostgreSQL recommandé) :
 
-#### Configuration Base de données
-```env
-DATABASE_NAME=nom_base_de_données
-DATABASE_USER=utilisateur_base_de_données
-DATABASE_PASSWORD=mot_de_passe_base_de_données
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-```
-
-- Supporte PostgreSQL par défaut
-- Configurez les accès selon votre environnement
-
-#### Configuration CORS
-```env
-CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
-CORS_ALLOW_CREDENTIALS=True
-```
-
-- Liste des origines autorisées pour les requêtes CORS
-- Important pour l'interaction avec le frontend
-
-#### Configuration JWT
-```env
-ACCESS_TOKEN_LIFETIME=00:00:30
-REFRESH_TOKEN_LIFETIME=08:00:00
-```
-
-- Durées de vie des tokens d'authentification
-- Format : HH:MM:SS
-
-#### Configuration Admin
-```env
-ADMIN_EMAIL=admin@exemple.com
-ADMIN_PASSWORD=mot_de_passe_securise
-ADMIN_NOM=Nom
-ADMIN_PRENOM=Prénom
-ADMIN_MATRICULE=MAT001
-```
-
-- Informations pour le compte administrateur par défaut
-- Utilisées par la commande `python manage.py createAdmin`
-
-## Sécurité
-
-### En Production
-
-1. Désactivez le mode DEBUG :
-```env
-DEBUG=False
-```
-
-2. Configurez une SECRET_KEY sécurisée :
-```env
-SECRET_KEY=votre-clé-très-secrète-et-très-longue
-```
-
-3. Limitez les ALLOWED_HOSTS :
-```env
-ALLOWED_HOSTS=votre-domaine.com,www.votre-domaine.com
-```
-
-4. Configurez CORS strictement :
-```env
-CORS_ALLOWED_ORIGINS=https://votre-frontend.com
-```
-
-5. Ajustez les durées des tokens JWT :
-```env
-ACCESS_TOKEN_LIFETIME=00:15:00
-REFRESH_TOKEN_LIFETIME=24:00:00
-```
-
-## Scripts de Gestion
-
-### Population de la Base de Données
-```bash
-python manage.py populate_jo_2
-```
-- Crée des données de test pour les JO
-- Utilisez uniquement en développement
-
-### Nettoyage de la Base de Données
-```bash
-python manage.py flush
-```
-- Supprime toutes les données
-- À utiliser avec précaution
-
-## Configuration du Serveur Web
-
-### Développement
-```bash
-python manage.py runserver
-```
-
-### Production
-Recommandations :
-- Utilisez Gunicorn comme serveur WSGI
-- Configurez Nginx comme proxy inverse
-- Activez HTTPS avec Let's Encrypt
-
-## Configuration des Settings Django
-
-### Structure des Settings
-
-Le projet utilise une configuration modulaire des settings :
-- `settings.py` : Configuration de base
-- Variables d'environnement : Configurations sensibles
-
-### Paramètres Principaux
-
-#### Applications Installées
 ```python
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'corsheaders',
-    'api',
-    'users',
-    'authentication',
-]
-```
-
-#### Middleware
-```python
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Important pour CORS
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-```
-
-#### Configuration REST Framework
-```python
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'apijoback'),
+        'USER': os.environ.get('DB_USER', 'apijouser'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
 }
 ```
 
-#### Configuration JWT
+### Authentification JWT
+
 ```python
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=int(os.getenv('ACCESS_TOKEN_LIFETIME', 30))),
-    'REFRESH_TOKEN_LIFETIME': timedelta(hours=int(os.getenv('REFRESH_TOKEN_LIFETIME', 24))),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
 }
 ```
 
-#### Configuration des Fichiers Statiques et Media
+### CORS (Cross-Origin Resource Sharing)
+
 ```python
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-```
-
-### Paramètres de Sécurité
-
-#### Protection contre les attaques
-```python
-# Protection CSRF
-CSRF_COOKIE_SECURE = True  # En production
-CSRF_COOKIE_HTTPONLY = True
-
-# Protection XSS
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# Protection SSL/HTTPS
-SECURE_SSL_REDIRECT = True  # En production
-SECURE_HSTS_SECONDS = 31536000  # 1 an
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-```
-
-### Internationalisation
-```python
-LANGUAGE_CODE = 'fr-fr'
-TIME_ZONE = 'Europe/Paris'
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-```
-
-### Configuration des Templates
-```python
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend React
+    "http://127.0.0.1:3000",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 ```
 
-### Configuration des Logs
-```python
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-```
+## Configuration des modèles
 
-### Customisation du Modèle Utilisateur
-```python
-AUTH_USER_MODEL = 'users.User'
-```
+### Paramètres par défaut des modèles
 
-### Validation des Mots de Passe
+#### Événements
+
+Les événements ont des paramètres par défaut configurables :
+
+- Nombre de places par défaut : 1000 places
+- Gestion automatique des places restantes
+
+## Configuration des rôles utilisateurs
+
+L'API supporte trois rôles principaux :
+
+### Client
+
+- Permissions : Consultation des événements et offres
+- Restrictions : Pas d'accès admin
+- Profil : ClientProfile avec informations personnelles
+
+### Employé
+
+- Permissions : Gestion des événements et épreuves
+- Restrictions : Pas de création d'utilisateurs
+- Profil : EmployeProfile avec matricule
+- Utilisation dans les vues : [isEmploye]
+
+### Admin
+
+- Permissions : Accès complet à l'API
+- Capacités : Création d'employés, gestion complète
+- Accès : API complète
+- Utilisation dans les vues : [isAdmin]
+
+## Configuration des validateurs
+
+### Validation des mots de passe
+
+Configuration du StrongPasswordValidator :
+
 ```python
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'authentication.validators.StrongPasswordValidator',
         'OPTIONS': {
-            'min_length': 8,
+            'min_length': 12,
+            'require_uppercase': True,
+            'require_lowercase': True,
+            'require_digits': True,
+            'require_special': True,
         }
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 ```
+
+### Validation des emails
+
+Utilise le EmailValidator intégré avec vérifications anti-spam.
+
+## Configuration de l'API REST
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+```
+
+## Configuration des médias
+
+```python
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Taille maximale des fichiers (5MB)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
+```
+
+## Configuration de production
+
+```env
+# Sécurité
+DEBUG=False
+SECRET_KEY=votre_clé_très_sécurisée
+ALLOWED_HOSTS=votredomaine.com,www.votredomaine.com
+
+# Base de données production
+DB_NAME=apijoback_prod
+DB_HOST=votre_serveur_db
+DB_PASSWORD=mot_de_passe_très_sécurisé
+
+# CORS
+CORS_ALLOWED_ORIGINS=https://votredomaine1.com,https://votredomaine2.com
+```
+
+## Tests de configuration
+
+```bash
+# Test des paramètres Django
+python manage.py check
+
+# Test de la base de données
+python manage.py dbshell
+
+# Test des migrations
+python manage.py showmigrations
+
+# Test de l'API
+python manage.py test
+```
+
+## Problèmes de configuration courants
+
+- Erreur 500 : Vérifiez DEBUG=True en développement
+- CORS : Ajoutez votre frontend aux CORS_ALLOWED_ORIGINS
+- JWT : Vérifiez que les tokens ne sont pas expirés
+- Permissions : Contrôlez les rôles utilisateurs

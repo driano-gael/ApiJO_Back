@@ -37,9 +37,9 @@ L'API est construite avec Django REST Framework et utilise :
    :maxdepth: 1
    :caption: Guides
 
-   installation
-   configuration
-   utilisation
+   guide/installation
+   guide/configuration
+   guide/utilisation
 
 Indices et tables
 =================
