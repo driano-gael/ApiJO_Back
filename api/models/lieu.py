@@ -12,10 +12,10 @@ class Lieu(models.Model):
     Modèle représentant un lieu sportif.
 
     Un lieu est un site où se déroulent les événements sportifs
-    (par exemple : Stade de France, Centre Aquatique, etc.)
+    (par exemple : Stade de France, Centre Aquatique, etc.).
 
-    Attributes:
-        nom (str): Le nom du lieu sportif (max 100 caractères)
+    :ivar nom: Nom du lieu sportif
+    :type nom: str
     """
     nom = models.CharField(max_length=100, help_text="Nom du lieu sportif")
 
@@ -23,13 +23,22 @@ class Lieu(models.Model):
         """
         Représentation textuelle du lieu.
 
-        Returns:
-            str: Le nom du lieu
+        :return: Le nom du lieu
+        :rtype: str
         """
         return self.nom
 
     class Meta:
-        """Métadonnées du modèle Lieu."""
+        """
+        Métadonnées du modèle Lieu.
+
+        :cvar verbose_name: Nom lisible du lieu au singulier
+        :type verbose_name: str
+        :cvar verbose_name_plural: Nom lisible du lieu au pluriel
+        :type verbose_name_plural: str
+        :cvar ordering: Ordre par défaut pour les requêtes
+        :type ordering: list
+        """
         verbose_name = "Lieu"
         verbose_name_plural = "Lieux"
         ordering = ['nom']

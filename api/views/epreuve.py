@@ -8,7 +8,7 @@ sur les épreuves, avec un tri optimisé par discipline, date et horaire.
 import rest_framework.generics
 from api.models.epreuve import Epreuve
 from api.serializers.epreuve import EpreuveSerializer
-from authentication.permissions import *
+from authentication.permissions import IsAdmin
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
@@ -19,12 +19,20 @@ class EpreuveListView(rest_framework.generics.ListAPIView):
     Récupère la liste des épreuves triées par discipline, date et horaire.
     Utilise select_related pour optimiser les requêtes vers la base de données.
     Accessible à tous les utilisateurs (authentifiés ou non).
+
+    :cvar queryset: Queryset des épreuves avec optimisations
+    :type queryset: QuerySet[Epreuve]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EpreuveSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Epreuve.objects.select_related("evenement", "discipline").order_by(
-        "discipline__nom","evenement__date", "evenement__horraire"
+        "discipline__nom", "evenement__date", "evenement__horraire"
     )
     serializer_class = EpreuveSerializer
     permission_classes = [AllowAny]
+
 
 class EpreuveDetailView(rest_framework.generics.RetrieveAPIView):
     """
@@ -33,10 +41,18 @@ class EpreuveDetailView(rest_framework.generics.RetrieveAPIView):
     Permet de récupérer les informations détaillées d'une épreuve
     via son identifiant unique.
     Accessible à tous les utilisateurs (authentifiés ou non).
+
+    :cvar queryset: Queryset des épreuves
+    :type queryset: QuerySet[Epreuve]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EpreuveSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Epreuve.objects.all()
     serializer_class = EpreuveSerializer
     permission_classes = [AllowAny]
+
 
 class EpreuveCreateView(rest_framework.generics.CreateAPIView):
     """
@@ -44,10 +60,18 @@ class EpreuveCreateView(rest_framework.generics.CreateAPIView):
 
     Permet aux administrateurs authentifiés de créer de nouvelles épreuves sportives.
     Nécessite une authentification et des permissions d'administrateur.
+
+    :cvar queryset: Queryset des épreuves
+    :type queryset: QuerySet[Epreuve]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EpreuveSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Epreuve.objects.all()
     serializer_class = EpreuveSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
+
 
 class EpreuveUpdateView(rest_framework.generics.UpdateAPIView):
     """
@@ -56,10 +80,18 @@ class EpreuveUpdateView(rest_framework.generics.UpdateAPIView):
     Permet aux administrateurs authentifiés de modifier les informations
     d'une épreuve existante.
     Nécessite une authentification et des permissions d'administrateur.
+
+    :cvar queryset: Queryset des épreuves
+    :type queryset: QuerySet[Epreuve]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EpreuveSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Epreuve.objects.all()
     serializer_class = EpreuveSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
+
 
 class EpreuveDeleteView(rest_framework.generics.DestroyAPIView):
     """
@@ -67,6 +99,13 @@ class EpreuveDeleteView(rest_framework.generics.DestroyAPIView):
 
     Permet aux administrateurs authentifiés de supprimer une épreuve existante.
     Nécessite une authentification et des permissions d'administrateur.
+
+    :cvar queryset: Queryset des épreuves
+    :type queryset: QuerySet[Epreuve]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EpreuveSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Epreuve.objects.all()
     serializer_class = EpreuveSerializer

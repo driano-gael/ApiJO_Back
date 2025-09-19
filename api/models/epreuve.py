@@ -15,16 +15,20 @@ class Epreuve(models.Model):
     Modèle représentant une épreuve sportive.
 
     Une épreuve est une compétition spécifique dans une discipline donnée,
-    caractérisée par son genre (homme/femme/mixte) et son tour (finale, qualification, etc.).
+    caractérisée par son genre (homme/femme/mixte) et son tour (finale, demi-finale, etc.).
     Chaque épreuve est associée à un événement et doit être unique par combinaison
     de critères pour éviter les doublons.
 
-    Attributes:
-        libelle (str): Intitulé de l'épreuve (max 100 caractères)
-        genre (str): Genre de l'épreuve - homme, femme ou mixte (défaut: "mixte")
-        tour (str): Tour de l'épreuve - finale, demi-finale, etc. (max 100 caractères)
-        discipline (Discipline): Discipline sportive associée (clé étrangère)
-        evenement (Evenement): Événement associé (clé étrangère optionnelle)
+    :ivar libelle: Intitulé de l'épreuve
+    :type libelle: str
+    :ivar genre: Genre de l'épreuve (homme, femme, mixte)
+    :type genre: str
+    :ivar tour: Tour de l'épreuve (finale, demi-finale, qualification, etc.)
+    :type tour: str
+    :ivar discipline: Discipline sportive associée
+    :type discipline: Discipline
+    :ivar evenement: Événement associé à cette épreuve (optionnel)
+    :type evenement: Evenement or None
     """
     libelle = models.CharField(max_length=100, help_text="Intitulé de l'épreuve")
     genre = models.CharField(
@@ -53,7 +57,18 @@ class Epreuve(models.Model):
     )
 
     class Meta:
-        """Métadonnées du modèle Epreuve."""
+        """
+        Métadonnées du modèle Epreuve.
+
+        :cvar constraints: Contraintes d'unicité sur libelle, genre, discipline, tour et evenement
+        :type constraints: list
+        :cvar verbose_name: Nom lisible de l'épreuve au singulier
+        :type verbose_name: str
+        :cvar verbose_name_plural: Nom lisible de l'épreuve au pluriel
+        :type verbose_name_plural: str
+        :cvar ordering: Ordre par défaut pour les requêtes
+        :type ordering: list
+        """
         constraints = [
             models.UniqueConstraint(
                 fields=['libelle', 'genre', 'discipline', "tour", 'evenement'],
@@ -68,7 +83,7 @@ class Epreuve(models.Model):
         """
         Représentation textuelle de l'épreuve.
 
-        Returns:
-            str: Le libellé de l'épreuve
+        :return: Le libellé de l'épreuve
+        :rtype: str
         """
         return self.libelle

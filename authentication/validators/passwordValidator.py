@@ -1,9 +1,15 @@
 """
 Validateur personnalisé pour les mots de passe forts.
 
-Ce module contient un validateur qui impose des règles strictes pour les mots de passe :
+Ce module fournit un validateur qui impose des règles strictes de sécurité
+pour les mots de passe utilisateur :
 - Minimum 12 caractères
-- Au moins une majuscule, une minuscule, un chiffre et un caractère spécial
+- Au moins une majuscule
+- Au moins une minuscule
+- Au moins un chiffre
+- Au moins un caractère spécial
+
+:module: users.validators.password
 """
 
 import re
@@ -14,24 +20,22 @@ class StrongPasswordValidator:
     """
     Validateur pour des mots de passe sécurisés.
 
-    Impose des règles strictes de sécurité pour les mots de passe utilisateur :
-    - Longueur minimale de 12 caractères
-    - Présence obligatoire d'au moins une majuscule
-    - Présence obligatoire d'au moins une minuscule
-    - Présence obligatoire d'au moins un chiffre
-    - Présence obligatoire d'au moins un caractère spécial
+    Impose des règles strictes de sécurité pour les mots de passe utilisateur.
+
+    :methods:
+        - validate(password, user=None): Valide le mot de passe selon les règles.
+        - get_help_text(): Retourne un texte d'aide décrivant les règles.
     """
 
     def validate(self, password, user=None):
         """
-        Valide un mot de passe selon les règles de sécurité définies.
+        Valide un mot de passe selon les règles définies.
 
-        Args:
-            password (str): Le mot de passe à valider
-            user (User, optional): L'utilisateur associé (non utilisé ici)
-
-        Raises:
-            ValidationError: Si le mot de passe ne respecte pas une des règles
+        :param password: Le mot de passe à valider
+        :type password: str
+        :param user: L'utilisateur associé (non utilisé ici)
+        :type user: User, optional
+        :raises ValidationError: Si le mot de passe ne respecte pas une des règles
         """
         if len(password) < 12:
             raise ValidationError(gettext("Le mot de passe doit contenir au moins 12 caractères."))
@@ -52,8 +56,8 @@ class StrongPasswordValidator:
         """
         Retourne le texte d'aide pour ce validateur.
 
-        Returns:
-            str: Message d'aide expliquant les règles de mot de passe
+        :return: Message d'aide expliquant les règles de mot de passe
+        :rtype: str
         """
         return gettext(
             "Le mot de passe doit contenir au moins 12 caractères, "

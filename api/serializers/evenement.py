@@ -17,17 +17,14 @@ class EvenementSerializer(serializers.ModelSerializer):
     Gère la sérialisation des événements avec leurs relations aux épreuves et lieux.
     Permet l'assignation d'épreuves à un événement tout en évitant les conflits.
 
-    Fields:
-        - id: Identifiant unique de l'événement
-        - description: Description de l'événement
-        - lieu: Données complètes du lieu (lecture seule)
-        - lieu_id: ID du lieu pour l'écriture
-        - date: Date de l'événement
-        - horraire: Heure de l'événement
-        - epreuves: Liste des épreuves associées (lecture seule)
-        - epreuve_ids: IDs des épreuves à associer (écriture seule)
-        - nb_place_total: Nombre total de places
-        - nb_place_restante: Nombre de places disponibles
+    :ivar epreuves: Liste des épreuves associées (lecture seule)
+    :type epreuves: list of EpreuveSerializer
+    :ivar epreuve_ids: IDs des épreuves à associer (écriture seule)
+    :type epreuve_ids: PrimaryKeyRelatedField
+    :ivar lieu: Données complètes du lieu (lecture seule)
+    :type lieu: LieuSerializer
+    :ivar lieu_id: ID du lieu pour l'écriture
+    :type lieu_id: PrimaryKeyRelatedField
     """
     epreuves = EpreuveSerializer(many=True, read_only=True)
     epreuve_ids = serializers.PrimaryKeyRelatedField(
@@ -45,6 +42,14 @@ class EvenementSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
+        """
+                Configuration du sérialiseur.
+
+                :cvar model: Modèle Django associé au sérialiseur
+                :type model: Evenement
+                :cvar fields: Champs inclus dans la sérialisation
+                :type fields: list
+                """
         model = Evenement
         fields = [
             'id', 'description',
@@ -61,14 +66,11 @@ class EvenementSerializer(serializers.ModelSerializer):
         Vérifie qu'aucune épreuve n'est déjà assignée à un autre événement
         pour éviter les conflits d'assignation.
 
-        Args:
-            value: Liste des épreuves à valider
-
-        Returns:
-            list: Liste des épreuves validées
-
-        Raises:
-            ValidationError: Si des épreuves sont déjà assignées ailleurs
+        :param value: Liste des épreuves à valider
+        :type value: list of Epreuve
+        :return: Liste des épreuves validées
+        :rtype: list of Epreuve
+        :raises serializers.ValidationError: Si des épreuves sont déjà assignées ailleurs
         """
         if not value:
             return value
@@ -91,11 +93,10 @@ class EvenementSerializer(serializers.ModelSerializer):
         """
         Crée un nouvel événement avec ses épreuves associées.
 
-        Args:
-            validated_data: Données validées pour la création
-
-        Returns:
-            Evenement: L'événement créé avec ses épreuves assignées
+        :param validated_data: Données validées pour la création
+        :type validated_data: dict
+        :return: L'événement créé avec ses épreuves assignées
+        :rtype: Evenement
         """
         epreuves = validated_data.pop('epreuves', [])
         evenement = Evenement.objects.create(**validated_data)
@@ -108,17 +109,11 @@ class EvenementSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """
-        Met à jour un événement existant et gère les changements d'épreuves.
+        Met à jour un événement et gère les épreuves associées.
 
-        Synchronise les épreuves associées : désassocie les anciennes
-        et associe les nouvelles selon les données fournies.
+        Désassocie les anciennes épreuves et assigne les nouvelles si présentes.
 
-        Args:
-            instance: L'événement à mettre à jour
-            validated_data: Nouvelles données validées
-
-        Returns:
-            Evenement: L'événement mis à jour
+        :return: L'événement mis à jour
         """
         epreuves = validated_data.pop('epreuves', None)
 

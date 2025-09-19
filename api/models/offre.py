@@ -14,11 +14,14 @@ class Offre(models.Model):
     Une offre correspond à un package ou type de billet disponible
     pour les spectateurs, avec un prix variable selon le nombre de personnes.
 
-    Attributes:
-        libelle (str): Nom de l'offre (max 100 caractères)
-        nb_personne (int): Nombre de personnes concernées par l'offre (défaut: 0)
-        montant (float): Montant de l'offre en euros (défaut: 0.00)
-        description (str): Description détaillée de l'offre
+    :ivar libelle: Nom de l'offre
+    :type libelle: str
+    :ivar nb_personne: Nombre de personnes concernées par l'offre
+    :type nb_personne: int
+    :ivar montant: Montant de l'offre en euros
+    :type montant: float
+    :ivar description: Description détaillée de l'offre
+    :type description: str
     """
     libelle = models.CharField(max_length=100, help_text="Nom de l'offre")
     nb_personne = models.IntegerField(
@@ -38,13 +41,22 @@ class Offre(models.Model):
         """
         Représentation textuelle de l'offre.
 
-        Returns:
-            str: Le libellé de l'offre
+        :return: Le libellé de l'offre
+        :rtype: str
         """
         return self.libelle
 
     class Meta:
-        """Métadonnées du modèle Offre."""
+        """
+        Métadonnées du modèle Offre.
+
+        :cvar verbose_name: Nom lisible de l'offre au singulier
+        :type verbose_name: str
+        :cvar verbose_name_plural: Nom lisible de l'offre au pluriel
+        :type verbose_name_plural: str
+        :cvar ordering: Ordre par défaut pour les requêtes
+        :type ordering: list
+        """
         verbose_name = "Offre"
         verbose_name_plural = "Offres"
         ordering = ['nb_personne', 'montant']

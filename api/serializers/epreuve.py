@@ -18,15 +18,11 @@ class EpreuveSerializer(serializers.ModelSerializer):
     Gère la sérialisation des épreuves avec leurs relations aux disciplines et événements.
     Inclut une validation pour éviter les doublons d'épreuves dans une même discipline.
 
-    Fields:
-        - id: Identifiant unique de l'épreuve
-        - libelle: Intitulé de l'épreuve
-        - discipline: Données complètes de la discipline (lecture seule)
-        - discipline_id: ID de la discipline pour l'écriture
-        - evenement: Données de l'événement associé (lecture seule)
-        - evenement_id: ID de l'événement pour l'écriture (optionnel)
-        - genre: Genre de l'épreuve (homme, femme, mixte)
-        - tour: Tour de l'épreuve (finale, demi-finale, etc.)
+    Attributes:
+        discipline (DisciplineSerializer): Données complètes de la discipline (lecture seule)
+        discipline_id (PrimaryKeyRelatedField): ID de la discipline pour l'écriture
+        evenement (NestedEvenementSerializer): Données de l'événement associé (lecture seule)
+        evenement_id (PrimaryKeyRelatedField): ID de l'événement pour l'écriture (optionnel)
     """
     discipline = DisciplineSerializer(read_only=True)
     discipline_id = serializers.PrimaryKeyRelatedField(
@@ -50,14 +46,11 @@ class EpreuveSerializer(serializers.ModelSerializer):
         Vérifie qu'aucune épreuve avec le même libellé n'existe déjà
         pour la même discipline.
 
-        Args:
-            data: Données à valider
-
-        Returns:
-            dict: Données validées
-
-        Raises:
-            ValidationError: Si une épreuve similaire existe déjà
+        :param data: Données à valider
+        :type data: dict
+        :return: Données validées
+        :rtype: dict
+        :raises serializers.ValidationError: Si une épreuve similaire existe déjà
         """
         discipline = data.get('discipline') or self.instance.discipline
         libelle = data.get('libelle') or self.instance.libelle
@@ -72,6 +65,13 @@ class EpreuveSerializer(serializers.ModelSerializer):
         return data
 
     class Meta:
+        """
+        Configuration du sérialiseur.
+
+        Attributes:
+            model (Model): Modèle Django associé au sérialiseur
+            fields (list): Champs inclus dans la sérialisation
+        """
         model = Epreuve
         fields = ['id',
                   'libelle',

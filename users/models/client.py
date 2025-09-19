@@ -9,6 +9,7 @@ import hashlib
 from django.db import models
 from .base_user import User
 
+
 class ClientProfile(models.Model):
     """
     Profil client lié à un utilisateur.
@@ -17,13 +18,18 @@ class ClientProfile(models.Model):
     spécifiques aux clients : nom, prénom, téléphone et clé chiffrée
     générée automatiquement pour la sécurité.
 
-    Attributes:
-        user (User): Relation one-to-one avec l'utilisateur de base
-        nom (str): Nom de famille du client
-        prenom (str): Prénom du client
-        telephone (str): Numéro de téléphone du client
-        cle_chiffree (str): Clé chiffrée générée automatiquement
+    :ivar user: Relation one-to-one avec l'utilisateur de base
+    :vartype user: User
+    :ivar nom: Nom de famille du client
+    :vartype nom: str
+    :ivar prenom: Prénom du client
+    :vartype prenom: str
+    :ivar telephone: Numéro de téléphone du client
+    :vartype telephone: str
+    :ivar cle_chiffree: Clé chiffrée générée automatiquement
+    :vartype cle_chiffree: str
     """
+
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
@@ -45,26 +51,34 @@ class ClientProfile(models.Model):
         Génère automatiquement une clé chiffrée basée sur l'email et le nom
         si elle n'existe pas déjà.
 
-        Args:
-            *args: Arguments positionnels pour la méthode save
-            **kwargs: Arguments nommés pour la méthode save
+        :param args: Arguments positionnels pour la méthode save
+        :param kwargs: Arguments nommés pour la méthode save
         """
         if not self.cle_chiffree:
             raw_key = f"{self.user.email}-{self.nom}"
             self.cle_chiffree = hashlib.sha256(raw_key.encode('utf-8')).hexdigest()
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Représentation textuelle du profil client.
 
-        Returns:
-            str: Nom complet du client (nom + prénom)
+        :return: Nom complet du client (nom + prénom)
+        :rtype: str
         """
         return f"{self.nom} {self.prenom}"
 
     class Meta:
-        """Métadonnées du modèle ClientProfile."""
+        """
+        Métadonnées du modèle ClientProfile.
+
+        :cvar verbose_name: Nom lisible au singulier
+        :vartype verbose_name: str
+        :cvar verbose_name_plural: Nom lisible au pluriel
+        :vartype verbose_name_plural: str
+        :cvar ordering: Ordre par défaut (nom, prénom)
+        :vartype ordering: list
+        """
         verbose_name = "Profil Client"
         verbose_name_plural = "Profils Clients"
         ordering = ['nom', 'prenom']

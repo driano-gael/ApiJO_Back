@@ -3,6 +3,8 @@ Sérialiseurs pour l'inscription des employés.
 
 Ce module contient les sérialiseurs nécessaires pour gérer l'inscription
 des employés avec validation des données et création automatique du profil.
+
+:module: users.serializers.employee_register
 """
 
 from rest_framework import serializers
@@ -18,13 +20,18 @@ class EmployeeRegisterSerializer(serializers.ModelSerializer):
     Gère l'inscription complète d'un employé avec création automatique
     du profil utilisateur et validation de tous les champs requis.
 
-    Fields:
-        - email: Adresse email unique
-        - password: Mot de passe (avec validation Django)
-        - nom: Nom de famille
-        - prenom: Prénom
-        - matricule: Numéro de matricule employé (unique)
-        - identifiant_telephone: Identifiant téléphonique professionnel
+    :ivar email: Adresse email unique
+    :type email: str
+    :ivar password: Mot de passe (avec validation Django)
+    :type password: str
+    :ivar nom: Nom de famille
+    :type nom: str
+    :ivar prenom: Prénom
+    :type prenom: str
+    :ivar matricule: Numéro de matricule employé (unique)
+    :type matricule: str
+    :ivar identifiant_telephone: Identifiant téléphonique professionnel
+    :type identifiant_telephone: str
     """
     email = serializers.EmailField(write_only=True)
     password = serializers.CharField(write_only=True)
@@ -34,6 +41,14 @@ class EmployeeRegisterSerializer(serializers.ModelSerializer):
     matricule = serializers.CharField(write_only=True)
 
     class Meta:
+        """
+        Configuration du sérialiseur.
+
+        :cvar model: Modèle Django associé au sérialiseur
+        :type model: EmployeProfile
+        :cvar fields: Champs inclus dans la sérialisation
+        :type fields: list
+        """
         model = EmployeProfile
         fields = ['email', 'password', 'nom', 'prenom', 'matricule', 'identifiant_telephone']
 
@@ -41,14 +56,11 @@ class EmployeeRegisterSerializer(serializers.ModelSerializer):
         """
         Valide l'unicité de l'adresse email.
 
-        Args:
-            value (str): L'adresse email à valider
-
-        Returns:
-            str: L'email validé
-
-        Raises:
-            ValidationError: Si l'email est déjà utilisé
+        :param value: L'adresse email à valider
+        :type value: str
+        :return: L'email validé
+        :rtype: str
+        :raises serializers.ValidationError: Si l'email est déjà utilisé
         """
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError("Un utilisateur avec cet email existe déjà.")
@@ -61,14 +73,11 @@ class EmployeeRegisterSerializer(serializers.ModelSerializer):
         Valide le mot de passe selon les règles Django et crée l'utilisateur
         avec le rôle 'employe' ainsi que son profil associé.
 
-        Args:
-            validated_data (dict): Les données validées
-
-        Returns:
-            EmployeProfile: Le profil employé créé
-
-        Raises:
-            ValidationError: Si le mot de passe ne respecte pas les règles
+        :param validated_data: Les données validées
+        :type validated_data: dict
+        :return: Le profil employé créé
+        :rtype: EmployeProfile
+        :raises serializers.ValidationError: Si le mot de passe ne respecte pas les règles
         """
         email = validated_data.pop('email')
         password = validated_data.pop('password')

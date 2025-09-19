@@ -19,14 +19,25 @@ class NestedEpreuveSerializer(serializers.ModelSerializer):
     Version simplifiée du sérialiseur d'épreuve utilisée dans les relations
     pour éviter les imports circulaires. N'inclut que les champs essentiels.
 
-    Fields:
-        - id: Identifiant unique de l'épreuve
-        - libelle: Intitulé de l'épreuve
-        - discipline: Discipline associée
+    :ivar id: Identifiant unique de l'épreuve
+    :type id: int
+    :ivar libelle: Intitulé de l'épreuve
+    :type libelle: str
+    :ivar discipline: Discipline associée
+    :type discipline: Discipline
     """
     class Meta:
+        """
+        Configuration du sérialiseur.
+
+        :cvar model: Modèle Django associé au sérialiseur
+        :type model: Epreuve
+        :cvar fields: Champs inclus dans la sérialisation
+        :type fields: list
+        """
         model = Epreuve
         fields = ['id', 'libelle', 'discipline']
+
 
 class NestedEvenementSerializer(serializers.ModelSerializer):
     """
@@ -36,13 +47,18 @@ class NestedEvenementSerializer(serializers.ModelSerializer):
     pour éviter les imports circulaires. Inclut les informations de base
     avec la gestion du lieu.
 
-    Fields:
-        - id: Identifiant unique de l'événement
-        - description: Description de l'événement
-        - date: Date de l'événement
-        - horraire: Heure de l'événement
-        - lieu: Données du lieu (lecture seule)
-        - lieu_id: ID du lieu pour l'écriture
+    :ivar id: Identifiant unique de l'événement
+    :type id: int
+    :ivar description: Description de l'événement
+    :type description: str
+    :ivar date: Date de l'événement
+    :type date: date
+    :ivar horraire: Heure de l'événement
+    :type horraire: time
+    :ivar lieu: Données du lieu (lecture seule)
+    :type lieu: LieuSerializer
+    :ivar lieu_id: ID du lieu pour l'écriture
+    :type lieu_id: PrimaryKeyRelatedField
     """
     lieu = LieuSerializer(read_only=True)
     lieu_id = serializers.PrimaryKeyRelatedField(
@@ -50,12 +66,15 @@ class NestedEvenementSerializer(serializers.ModelSerializer):
         write_only=True,
         source='lieu'
     )
+
     class Meta:
+        """
+        Configuration du sérialiseur.
+
+        :cvar model: Modèle Django associé au sérialiseur
+        :type model: Evenement
+        :cvar fields: Champs inclus dans la sérialisation
+        :type fields: list
+        """
         model = Evenement
-        fields = ['id',
-                  'description',
-                  'date',
-                  'lieu_id',
-                  'lieu',
-                  'date',
-                  'horraire']
+        fields = ['id', 'description', 'date', 'horraire', 'lieu', 'lieu_id']

@@ -5,6 +5,7 @@ Ce module contient toutes les vues nécessaires pour effectuer des opérations C
 sur les événements, ainsi que des vues spécialisées pour récupérer des événements
 par épreuve.
 """
+
 import rest_framework.generics
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
@@ -12,7 +13,7 @@ from rest_framework.views import APIView
 from api.models.evenement import Evenement
 from api.models.epreuve import Epreuve
 from api.serializers.evenement import EvenementSerializer
-from authentication.permissions import *
+from authentication.permissions import IsAdmin
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
@@ -20,12 +21,20 @@ class EvenementListView(rest_framework.generics.ListAPIView):
     """
     Vue pour lister tous les événements.
 
-    Permet de récupérer la liste complète des événements disponibles.
+    Récupère la liste complète des événements disponibles.
     Accessible à tous les utilisateurs (authentifiés ou non).
+
+    :cvar queryset: Queryset des événements
+    :type queryset: QuerySet[Evenement]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EvenementSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Evenement.objects.all()
     serializer_class = EvenementSerializer
     permission_classes = [AllowAny]
+
 
 class EvenementDetailView(rest_framework.generics.RetrieveAPIView):
     """
@@ -34,10 +43,18 @@ class EvenementDetailView(rest_framework.generics.RetrieveAPIView):
     Permet de récupérer les informations détaillées d'un événement
     via son identifiant unique.
     Accessible à tous les utilisateurs (authentifiés ou non).
+
+    :cvar queryset: Queryset des événements
+    :type queryset: QuerySet[Evenement]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EvenementSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Evenement.objects.all()
     serializer_class = EvenementSerializer
     permission_classes = [AllowAny]
+
 
 class EvenementByEpreuveView(APIView):
     """
@@ -46,6 +63,9 @@ class EvenementByEpreuveView(APIView):
     Permet de récupérer l'événement associé à une épreuve spécifique.
     Retourne une erreur 404 si aucun événement n'est associé à l'épreuve.
     Accessible à tous les utilisateurs (authentifiés ou non).
+
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     permission_classes = [AllowAny]
 
@@ -53,17 +73,20 @@ class EvenementByEpreuveView(APIView):
         """
         Récupère l'événement associé à une épreuve.
 
-        Args:
-            request: La requête HTTP
-            pk (int): L'identifiant de l'épreuve
-
-        Returns:
-            Response: Les données de l'événement ou une erreur 404
+        :param request: La requête HTTP
+        :type request: Request
+        :param pk: L'identifiant de l'épreuve
+        :type pk: int
+        :return: Les données de l'événement ou une erreur 404
+        :rtype: Response
         """
         epreuve = get_object_or_404(Epreuve, id=pk)
         evenement = epreuve.evenement
         if evenement is None:
-            return Response({"detail": "Aucun événement associé à cette épreuve."}, status=404)
+            return Response(
+                {"detail": "Aucun événement associé à cette épreuve."},
+                status=404
+            )
         serializer = EvenementSerializer(evenement)
         return Response(serializer.data)
 
@@ -74,10 +97,18 @@ class EvenementCreateView(rest_framework.generics.CreateAPIView):
 
     Permet aux administrateurs authentifiés de créer de nouveaux événements.
     Nécessite une authentification et des permissions d'administrateur.
+
+    :cvar queryset: Queryset des événements
+    :type queryset: QuerySet[Evenement]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EvenementSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Evenement.objects.all()
     serializer_class = EvenementSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
+
 
 class EvenementUpdateView(rest_framework.generics.UpdateAPIView):
     """
@@ -86,10 +117,18 @@ class EvenementUpdateView(rest_framework.generics.UpdateAPIView):
     Permet aux administrateurs authentifiés de modifier les informations
     d'un événement existant.
     Nécessite une authentification et des permissions d'administrateur.
+
+    :cvar queryset: Queryset des événements
+    :type queryset: QuerySet[Evenement]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EvenementSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Evenement.objects.all()
     serializer_class = EvenementSerializer
     permission_classes = [IsAuthenticated, IsAdmin]
+
 
 class EvenementDeleteView(rest_framework.generics.DestroyAPIView):
     """
@@ -97,6 +136,13 @@ class EvenementDeleteView(rest_framework.generics.DestroyAPIView):
 
     Permet aux administrateurs authentifiés de supprimer un événement existant.
     Nécessite une authentification et des permissions d'administrateur.
+
+    :cvar queryset: Queryset des événements
+    :type queryset: QuerySet[Evenement]
+    :cvar serializer_class: Sérialiseur utilisé pour la vue
+    :type serializer_class: EvenementSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue
+    :type permission_classes: list
     """
     queryset = Evenement.objects.all()
     serializer_class = EvenementSerializer

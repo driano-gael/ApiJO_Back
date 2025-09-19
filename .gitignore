@@ -7,4 +7,3 @@ __pycache__/
 .idea/
 *.pyo
 *.db
-/users/management/commands/createAdmin.py

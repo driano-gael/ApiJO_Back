@@ -1,8 +1,11 @@
 """
 Validateur personnalisé pour les adresses email.
 
-Ce module contient un validateur qui vérifie non seulement le format de l'email,
-mais aussi qu'il ne s'agit pas d'un email jetable et qu'il n'est pas déjà utilisé.
+Ce module fournit un validateur qui vérifie le format de l'email,
+rejette les emails jetables et s'assure que l'adresse n'est pas déjà utilisée
+dans le système.
+
+:module: users.validators.email
 """
 
 import re
@@ -14,20 +17,21 @@ class EmailValidator:
     """
     Validateur personnalisé pour les adresses email.
 
-    Vérifie le format de l'email, rejette les domaines d'emails jetables
-    et s'assure que l'email n'est pas déjà enregistré dans le système.
+    Vérifie :
+        - le format de l'email,
+        - l'absence de domaines d'emails jetables,
+        - l'unicité de l'email dans la base de données.
 
-    Attributes:
-        forbidden_domains (list): Liste des domaines d'emails jetables interdits
+    :ivar forbidden_domains: Liste des domaines d'emails jetables interdits
+    :type forbidden_domains: list
     """
 
     def __init__(self, forbidden_domains=None):
         """
         Initialise le validateur avec une liste de domaines interdits.
 
-        Args:
-            forbidden_domains (list, optional): Domaines d'emails jetables à interdire.
-                                               Utilise une liste par défaut si None.
+        :param forbidden_domains: Domaines d'emails jetables à interdire
+        :type forbidden_domains: list, optional
         """
         self.forbidden_domains = forbidden_domains or [
             'tempmail.com',
@@ -40,11 +44,9 @@ class EmailValidator:
         """
         Valide l'adresse email selon plusieurs critères.
 
-        Args:
-            value (str): L'adresse email à valider
-
-        Raises:
-            ValidationError: Si l'email n'est pas valide, est jetable ou déjà utilisé
+        :param value: L'adresse email à valider
+        :type value: str
+        :raises ValidationError: Si l'email est invalide, jetable ou déjà utilisé
         """
         # Vérification du format
         if not re.match(r'^[\w\.-]+@[\w\.-]+\.\w+$', value):
@@ -63,8 +65,8 @@ class EmailValidator:
         """
         Retourne le texte d'aide pour ce validateur.
 
-        Returns:
-            str: Message d'aide expliquant les règles de validation
+        :return: Message d'aide expliquant les règles de validation
+        :rtype: str
         """
         return _(
             "Utilisez une adresse e-mail valide, non temporaire, et qui n'est pas déjà enregistrée."

@@ -14,11 +14,14 @@ class Discipline(models.Model):
     Une discipline est une catégorie de sport (par exemple : natation, athlétisme, etc.)
     qui peut contenir plusieurs épreuves.
 
-    Attributes:
-        nom (str): Le nom de la discipline sportive (max 100 caractères)
-        icone (str): Le chemin ou nom de l'icône représentant la discipline (max 200 caractères)
+    :ivar nom: (str) Nom de la discipline sportive
+    :ivar icone: (str) Chemin ou nom de l'icône représentant la discipline
+    :ivar epreuves: (Epreuve[]) Liste des épreuves associées
     """
-    nom = models.CharField(max_length=100, help_text="Nom de la discipline sportive")
+    nom = models.CharField(
+        max_length=100,
+        help_text="Nom de la discipline sportive"
+    )
     icone = models.CharField(
         max_length=200,
         default="",
@@ -29,13 +32,23 @@ class Discipline(models.Model):
         """
         Représentation textuelle de la discipline.
 
-        Returns:
-            str: Le nom de la discipline
+        :return: Le nom de la discipline
+        :rtype: str
         """
         return self.nom
 
     class Meta:
-        """Métadonnées du modèle Discipline."""
+        """
+        Métadonnées du modèle Discipline.
+
+        :cvar verbose_name: Nom lisible de la discipline au singulier
+        :type verbose_name: str
+        :cvar verbose_name_plural: Nom lisible de la discipline au pluriel
+        :type verbose_name_plural: str
+        :cvar ordering: Ordre par défaut pour les requêtes
+        :type ordering: list
+        """
         verbose_name = "Discipline"
         verbose_name_plural = "Disciplines"
         ordering = ['nom']
+

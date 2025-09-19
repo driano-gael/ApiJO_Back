@@ -1,8 +1,19 @@
-# from django.contrib import admin
+"""
+Fichier principal de configuration des URLs du projet.
+
+Ce module inclut toutes les routes de l'application principale et des applications
+secondaires comme l'API et l'authentification.
+
+:module: project.urls
+"""
+
 from django.urls import path, include
 
+#: Liste des URL patterns principales du projet
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    # API principale des Jeux Olympiques
     path('api/', include('api.urls')),
+
+    # Routes d'authentification (login, logout, registration, token, etc.)
     path('api/auth/', include('authentication.urls')),
 ]

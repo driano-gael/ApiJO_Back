@@ -16,13 +16,18 @@ class Evenement(models.Model):
     Un événement est une session sportive qui se déroule à un lieu et à une heure précise,
     avec un nombre de places limité pour les spectateurs.
 
-    Attributes:
-        description (str): Description de l'événement (max 250 caractères)
-        lieu (Lieu): Lieu où se déroule l'événement (clé étrangère)
-        date (date): Date de l'événement
-        horraire (time): Heure de début de l'événement
-        nb_place_total (int): Nombre total de places disponibles (défaut: 1000)
-        nb_place_restante (int): Nombre de places encore disponibles
+    :ivar description: Description de l'événement
+    :type description: str
+    :ivar lieu: Lieu où se déroule l'événement
+    :type lieu: Lieu
+    :ivar date: Date de l'événement
+    :type date: date
+    :ivar horraire: Heure de début de l'événement
+    :type horraire: time
+    :ivar nb_place_total: Nombre total de places disponibles
+    :type nb_place_total: int
+    :ivar nb_place_restante: Nombre de places encore disponibles
+    :type nb_place_restante: int or None
     """
     description = models.CharField(max_length=250, help_text="Description de l'événement")
     lieu = models.ForeignKey(
@@ -47,8 +52,8 @@ class Evenement(models.Model):
         """
         Représentation textuelle de l'événement.
 
-        Returns:
-            str: La description de l'événement
+        :return: La description de l'événement
+        :rtype: str
         """
         return self.description
 
@@ -59,9 +64,10 @@ class Evenement(models.Model):
         Lors de la création d'un nouvel événement, si le nombre de places restantes
         n'est pas spécifié, il est automatiquement initialisé avec le nombre total de places.
 
-        Args:
-            *args: Arguments positionnels pour la méthode save
-            **kwargs: Arguments nommés pour la méthode save
+        :param args: Arguments positionnels pour la méthode save
+        :type args: tuple
+        :param kwargs: Arguments nommés pour la méthode save
+        :type kwargs: dict
         """
         if not self.pk:  # création
             if self.nb_place_restante is None:
@@ -69,7 +75,16 @@ class Evenement(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        """Métadonnées du modèle Evenement."""
+        """
+        Métadonnées du modèle Evenement.
+
+        :cvar verbose_name: Nom lisible de l'événement au singulier
+        :type verbose_name: str
+        :cvar verbose_name_plural: Nom lisible de l'événement au pluriel
+        :type verbose_name_plural: str
+        :cvar ordering: Ordre par défaut pour les requêtes
+        :type ordering: list
+        """
         verbose_name = "Événement"
         verbose_name_plural = "Événements"
         ordering = ['date', 'horraire']

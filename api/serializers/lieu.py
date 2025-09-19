@@ -15,9 +15,17 @@ class LieuSerializer(serializers.ModelSerializer):
     Permet la conversion entre les objets Lieu et leur représentation JSON
     pour les échanges via l'API REST. Inclut tous les champs du modèle.
 
-    Fields:
-        - nom: Nom du lieu sportif
+    :ivar nom: Nom du lieu sportif
+    :type nom: str
     """
     class Meta:
+        """
+        Configuration du sérialiseur.
+
+        :cvar model: Modèle Django associé au sérialiseur
+        :type model: Lieu
+        :cvar fields: Champs inclus dans la sérialisation
+        :type fields: str
+        """
         model = Lieu
         fields = '__all__'
