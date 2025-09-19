@@ -3,8 +3,8 @@ Validateurs d'Authentification
 
 Les validateurs personnalisés assurent la sécurité et la qualité des données d'authentification.
 
-Sécurité renforcée
-==================
+# Sécurité renforcée
+
 
 - **Protection anti-spam** : Rejet des emails jetables
 - **Mots de passe robustes** : Règles strictes de complexité

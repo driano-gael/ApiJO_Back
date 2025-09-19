@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Recherche" href="../../search.html" /><link rel="next" title="Permissions" href="../permissions.html" /><link rel="prev" title="Vue Employee" href="employee.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Recherche" href="../../search.html" /><link rel="next" title="Validateurs d’Authentification" href="../validators/index.html" /><link rel="prev" title="Vue Employee" href="employee.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>Vue Token JWT - Documentation ApiJO 0.1</title>
@@ -201,7 +201,7 @@
 <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">Module API - Gestion des Entités des Jeux Olympiques</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Module API - Gestion des Entités des Jeux Olympiques</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../api/models/index.html">Modèles Api</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Modèles Api</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/models/discipline.html">Discipline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/models/discipline.html">Modele Discipline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/lieu.html">Modèle Lieu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/evenement.html">Modèle Evenement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/epreuve.html">Modèle Epreuve</a></li>
@@ -228,70 +228,24 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Module Authentication - Système d’Authentification JWT</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Module Authentication - Système d’Authentification JWT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../validators/index.html">Validateurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../validators/index.html#securite-renforcee">Sécurité renforcée</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sécurité renforcée</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html">Validateur Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html#utilisation-dans-les-serialiseurs">Utilisation dans les sérialiseurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html">Validateur de Mot de Passe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html#regles-de-securite">Règles de sécurité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html#configuration-django">Configuration Django</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html#utilisation-automatique">Utilisation automatique</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html#exemples">Exemples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../serializers/index.html">Sérialiseurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../serializers/index.html#fonctionnalites">Fonctionnalités</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Fonctionnalités</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../serializers/index.html">Sérialiseurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sérialiseurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../serializers/client.html">Sérialiseur Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../serializers/employee.html">Sérialiseur Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employee.html#differences-avec-clientregisterserializer">Différences avec ClientRegisterSerializer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../serializers/token.html">Sérialiseur Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#reponse-enrichie">Réponse enrichie</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#validation-des-identifiants">Validation des identifiants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html">Vues d’Authentification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#endpoints-disponibles">Endpoints disponibles</a></li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html#architecture-des-permissions">Architecture des permissions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Architecture des permissions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Vues d’Authentification</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Vues d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="client.html">Vue Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#clientregisterview">ClientRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#processus-d-inscription">Processus d’inscription</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#utilisation-cote-client">Utilisation côté client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="employee.html">Vue Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employee.html#employeeregisterview">EmployeeRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employee.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employee.html#processus-de-creation">Processus de création</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employee.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employee.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employee.html#securite">Sécurité</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Vue Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customtokenobtainpairview">CustomTokenObtainPairView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#reponse-complete">Réponse complète</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#endpoint-de-rafraichissement">Endpoint de rafraîchissement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-jwt">Configuration JWT</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../validators/index.html">Validateurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Validateurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../validators/email_validator.html">Validateur Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../validators/password_validator.html">Validateur de Mot de Passe</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../permissions.html">Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../permissions.html#permissions-disponibles">Permissions disponibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../permissions.html#architecture-des-permissions">Architecture des permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../permissions.html#exemples-d-utilisation">Exemples d’utilisation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../users/index.html">Module Users - Gestion des Utilisateurs</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Module Users - Gestion des Utilisateurs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -356,9 +310,6 @@
 <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#problemes-courants">Problèmes courants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#validation-de-l-installation">Validation de l’installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#prochaines-etapes">Prochaines étapes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html#configuration-django">Configuration Django</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html#configuration-des-modeles">Configuration des modèles</a></li>
@@ -426,16 +377,12 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-authentication.views.token">
-<span id="vue-token-jwt"></span><h1>Vue Token JWT<a class="headerlink" href="#module-authentication.views.token" title="Lien vers cette rubrique">¶</a></h1>
-<p>Vues personnalisées pour l’authentification JWT.</p>
-<p>Ce module contient les vues pour l’obtention des tokens JWT
-avec des informations supplémentaires sur l’utilisateur.</p>
-<dl class="field-list simple">
-<dt class="field-odd">module<span class="colon">:</span></dt>
-<dd class="field-odd"><p>authentication.views.token</p>
-</dd>
-</dl>
+          <section id="vue-token-jwt">
+<h1>Vue Token JWT<a class="headerlink" href="#vue-token-jwt" title="Lien vers cette rubrique">¶</a></h1>
+<section id="customtokenobtainpairview">
+<h2>CustomTokenObtainPairView<a class="headerlink" href="#customtokenobtainpairview" title="Lien vers cette rubrique">¶</a></h2>
+<p><strong>Endpoint :</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/auth/login/</span></code>
+<strong>Permissions :</strong> <code class="docutils literal notranslate"><span class="pre">AllowAny</span></code> (accès libre)</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="authentication.views.token.CustomTokenObtainPairView">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authentication.views.token.</span></span><span class="sig-name descname"><span class="pre">CustomTokenObtainPairView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#authentication.views.token.CustomTokenObtainPairView" title="Lien vers cette définition">¶</a></dt>
@@ -473,122 +420,7 @@ supplémentaires sur l’utilisateur (rôle, email) lors de la connexion.</p>
 
 </dd></dl>
 
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Lien vers cette rubrique">¶</a></h2>
-<p>La vue <strong>CustomTokenObtainPairView</strong> gère l’authentification JWT avec réponse enrichie incluant le rôle utilisateur.</p>
 </section>
-</section>
-<section id="customtokenobtainpairview">
-<h1>CustomTokenObtainPairView<a class="headerlink" href="#customtokenobtainpairview" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Endpoint :</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/auth/login/</span></code></p>
-<p><strong>Type :</strong> <code class="docutils literal notranslate"><span class="pre">TokenObtainPairView</span></code> (JWT standard étendu)</p>
-<p><strong>Permissions :</strong> <code class="docutils literal notranslate"><span class="pre">AllowAny</span></code> (accès libre)</p>
-</section>
-<section id="fonctionnalites">
-<h1>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Lien vers cette rubrique">¶</a></h1>
-<ul class="simple">
-<li><p>Génère les tokens JWT standard (access + refresh)</p></li>
-<li><p><strong>Enrichit la réponse</strong> avec le rôle et l’email utilisateur</p></li>
-<li><p>Facilite la gestion des permissions côté frontend</p></li>
-</ul>
-<ul class="simple">
-<li><p>Utilise l’email comme identifiant (au lieu du username)</p></li>
-<li><p>Compatible avec le modèle utilisateur personnalisé</p></li>
-<li><p>Messages d’erreur en français</p></li>
-</ul>
-</section>
-<section id="reponse-complete">
-<h1>Réponse complète<a class="headerlink" href="#reponse-complete" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Données retournées :</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">access</span></code> : Token d’accès JWT (courte durée)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">refresh</span></code> : Token de rafraîchissement JWT (longue durée)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">role</span></code> : Rôle de l’utilisateur (client, employe, admin)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">email</span></code> : Email de l’utilisateur authentifié</p></li>
-</ul>
-</section>
-<section id="exemple-d-utilisation">
-<h1>Exemple d’utilisation<a class="headerlink" href="#exemple-d-utilisation" title="Lien vers cette rubrique">¶</a></h1>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connexion utilisateur</span>
-POST<span class="w"> </span>/auth/login/
-Content-Type:<span class="w"> </span>application/json
-
-<span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;email&quot;</span>:<span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;password&quot;</span>:<span class="w"> </span><span class="s2">&quot;motdepasse&quot;</span>
-<span class="o">}</span>
-</pre></div>
-</div>
-<p><strong>Réponse de succès :</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;refresh&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;client&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="gestion-des-erreurs">
-<h1>Gestion des erreurs<a class="headerlink" href="#gestion-des-erreurs" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Identifiants manquants :</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;non_field_errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Email et mot de passe requis.&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p><strong>Identifiants incorrects :</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;non_field_errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Identifiants invalides.&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="integration-frontend">
-<h1>Intégration frontend<a class="headerlink" href="#integration-frontend" title="Lien vers cette rubrique">¶</a></h1>
-<p>Les informations enrichies permettent au frontend de :</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Exemple d&#39;utilisation côté client</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/auth/login/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">})</span>
-<span class="p">});</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-
-<span class="c1">// Stocker les tokens</span>
-<span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">access</span><span class="p">);</span>
-<span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;refresh_token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">refresh</span><span class="p">);</span>
-
-<span class="c1">// Adapter l&#39;interface selon le rôle</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">showAdminPanel</span><span class="p">();</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;employe&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">showEmployeeFeatures</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="endpoint-de-rafraichissement">
-<h1>Endpoint de rafraîchissement<a class="headerlink" href="#endpoint-de-rafraichissement" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Endpoint :</strong> <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/auth/refresh/</span></code></p>
-<p>Utilise le token de rafraîchissement pour obtenir un nouveau token d’accès :</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>POST<span class="w"> </span>/auth/refresh/
-Content-Type:<span class="w"> </span>application/json
-
-<span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;refresh&quot;</span>:<span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...&quot;</span>
-<span class="o">}</span>
-</pre></div>
-</div>
-</section>
-<section id="configuration-jwt">
-<h1>Configuration JWT<a class="headerlink" href="#configuration-jwt" title="Lien vers cette rubrique">¶</a></h1>
-<p>Les durées de vie des tokens sont configurées dans <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> :</p>
-<ul class="simple">
-<li><p><strong>ACCESS_TOKEN_LIFETIME</strong> : Durée du token d’accès</p></li>
-<li><p><strong>REFRESH_TOKEN_LIFETIME</strong> : Durée du token de rafraîchissement</p></li>
-</ul>
 </section>
 
         </article>
@@ -596,12 +428,12 @@ Content-Type:<span class="w"> </span>application/json
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../permissions.html">
+          <a class="next-page" href="../validators/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Permissions</div>
+                <div class="title">Validateurs d’Authentification</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -647,21 +479,15 @@ Content-Type:<span class="w"> </span>application/json
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Vue Token JWT</a><ul>
+<li><a class="reference internal" href="#customtokenobtainpairview">CustomTokenObtainPairView</a><ul>
 <li><a class="reference internal" href="#authentication.views.token.CustomTokenObtainPairView"><code class="docutils literal notranslate"><span class="pre">CustomTokenObtainPairView</span></code></a><ul>
 <li><a class="reference internal" href="#authentication.views.token.CustomTokenObtainPairView.serializer_class"><code class="docutils literal notranslate"><span class="pre">CustomTokenObtainPairView.serializer_class</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#customtokenobtainpairview">CustomTokenObtainPairView</a></li>
-<li><a class="reference internal" href="#fonctionnalites">Fonctionnalités</a></li>
-<li><a class="reference internal" href="#reponse-complete">Réponse complète</a></li>
-<li><a class="reference internal" href="#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li><a class="reference internal" href="#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li><a class="reference internal" href="#integration-frontend">Intégration frontend</a></li>
-<li><a class="reference internal" href="#endpoint-de-rafraichissement">Endpoint de rafraîchissement</a></li>
-<li><a class="reference internal" href="#configuration-jwt">Configuration JWT</a></li>
+</ul>
+</li>
 </ul>
 
           </div>

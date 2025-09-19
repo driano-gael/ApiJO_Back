@@ -1,69 +1,48 @@
 Installation
 ============
 
-Ce guide vous accompagne dans l'installation complète de l'API ApiJO (Jeux Olympiques).
+Ce guide vous accompagne dans l'installation complète de l'API ApiJO.
 
 Prérequis
 ---------
 
-Avant de commencer, assurez-vous d'avoir installé :
+- Python 3.x
+- PostgreSQL
+- Un environnement virtuel Python (recommandé)
+- Redis (optionnel, pour le cache)
 
-- **Python 3.8+** : Version recommandée 3.11 ou supérieure
-- **PostgreSQL** : Base de données principale
-- **Git** : Pour cloner le projet
-- **pip** : Gestionnaire de packages Python
+Installation de l'environnement
+-----------------------------
 
-Étape 1 : Clonage du projet
----------------------------
+1. Cloner le dépôt
+^^^^^^^^^^^^^^^^^^
 
-Clonez le repository depuis votre système de contrôle de version :
+.. code-block:: cmd
 
-.. code-block:: bash
-
-   git clone <url-du-repository>
+   git clone [url-du-repo]
    cd ApiJO_Back
 
-Étape 2 : Environnement virtuel
--------------------------------
+2. Créer l'environnement virtuel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Créez et activez un environnement virtuel Python :
-
-**Sur Windows :**
-
-.. code-block:: batch
+.. code-block:: cmd
 
    python -m venv .venv
-   .venv\Scripts\activate
+   .venv\Scripts\activate  # Sur Windows
+   source .venv/bin/activate  # Sur Linux/Mac
 
-**Sur Linux/MacOS :**
+3. Installer les dépendances
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
-
-   python -m venv .venv
-   source .venv/bin/activate
-
-Étape 3 : Installation des dépendances
---------------------------------------
-
-Installez toutes les dépendances requises :
-
-.. code-block:: bash
+.. code-block:: cmd
 
    pip install -r requirements.txt
 
-Les principales dépendances incluent :
+Configuration de la base de données
+--------------------------------
 
-- **Django** : Framework web principal
-- **Django REST Framework** : Pour l'API REST
-- **psycopg2** : Connecteur PostgreSQL
-- **djangorestframework-simplejwt** : Authentification JWT
-- **django-cors-headers** : Gestion CORS
-- **Pillow** : Traitement d'images
-
-Étape 4 : Configuration de la base de données
----------------------------------------------
-
-Créez une base de données PostgreSQL :
+1. Créer une base de données PostgreSQL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: sql
 
@@ -71,113 +50,122 @@ Créez une base de données PostgreSQL :
    CREATE USER apijouser WITH PASSWORD 'votre_mot_de_passe';
    GRANT ALL PRIVILEGES ON DATABASE apijoback TO apijouser;
 
-Étape 5 : Variables d'environnement
------------------------------------
+2. Configurer les variables d'environnement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Créez un fichier `.env` à la racine du projet :
 
 .. code-block:: bash
 
-# Seurité Django
-DEBUG= True ou false selon l'environnement
-SECRET_KEY='django-insecure-xxx...votre_clef_secrete...xxx'
-ALLOWED_HOSTS=127.0.0.1,localhost
-CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001
+   DB_NAME=apijoback
+   DB_USER=apijouser
+   DB_PASSWORD=votre_mot_de_passe
+   DB_HOST=localhost
+   DB_PORT=5432
+   SECRET_KEY=votre_clé_secrète
+   DEBUG=True
 
-# JWT Settings
-ACCESS_TOKEN_LIFETIME=00:00:30
-REFRESH_TOKEN_LIFETIME=08:00:00
+Configuration de Django
+--------------------
 
-# PostgreSQL Settings
-DATABASE_NAME= apijoback
-DATABASE_USER= apijouser
-DATABASE_HOST = localhost
-DATABASE_PORT = 5432
-DATABASE_PASSWORD=Pnattybre1zh
+1. Appliquer les migrations
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Étape 6 : Migrations de base de données
----------------------------------------
+.. code-block:: cmd
 
-Appliquez les migrations pour créer les tables :
-
-.. code-block:: bash
-
-   python manage.py makemigrations
    python manage.py migrate
 
-Étape 7 : Création du superutilisateur
---------------------------------------
+2. Créer un superutilisateur
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Créez un compte administrateur :
+.. code-block:: cmd
 
-.. code-block:: bash
+   python manage.py createsuperuser
 
-   python manage.py createadmin
+3. Collecter les fichiers statiques
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Étape 8 : Peupler la base de données
---------------------------------------
+.. code-block:: cmd
 
-.. code-block:: bash
+   python manage.py collectstatic
 
-   python manage.py populate_jo_2
+Configuration du CORS
+------------------
 
-Étape 9 : Test de l'installation
---------------------------------
+Modifier `settings.py` pour autoriser les origines de votre frontend :
 
-Lancez le serveur de développement :
+.. code-block:: python
 
-.. code-block:: bash
+   CORS_ALLOWED_ORIGINS = [
+       "http://localhost:3000",  # Frontend React
+       "http://127.0.0.1:3000",
+   ]
+
+   CORS_ALLOW_CREDENTIALS = True
+
+Installation de Redis (optionnel)
+------------------------------
+
+1. Installer Redis
+^^^^^^^^^^^^^^^
+
+- **Windows** : Télécharger et installer via https://github.com/microsoftarchive/redis/releases
+- **Linux** : ``sudo apt-get install redis-server``
+- **Mac** : ``brew install redis``
+
+2. Configurer Redis dans settings.py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   CACHES = {
+       'default': {
+           'BACKEND': 'django_redis.cache.RedisCache',
+           'LOCATION': 'redis://127.0.0.1:6379/1',
+           'OPTIONS': {
+               'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+           }
+       }
+   }
+
+Vérification de l'installation
+---------------------------
+
+1. Tests de base
+^^^^^^^^^^^^^
+
+.. code-block:: cmd
+
+   python manage.py check
+   python manage.py test
+
+2. Lancer le serveur
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: cmd
 
    python manage.py runserver
 
-Visitez http://127.0.0.1:8000/api/evenements pour vérifier que tout fonctionne.
+L'API devrait être accessible à http://localhost:8000/
 
+3. Vérifier l'interface d'administration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Problèmes courants
-==================
+Accédez à http://localhost:8000/admin avec les identifiants du superutilisateur
 
-Erreur de connexion PostgreSQL
-------------------------------
+Dépannage
+--------
 
-Vérifiez que :
+Problèmes courants :
 
-- PostgreSQL est démarré
-- Les paramètres de connexion sont corrects
-- L'utilisateur a les bonnes permissions
-
-Erreur de module manquant
--------------------------
-
-.. code-block:: bash
-
-   pip install --upgrade pip
-   pip install -r requirements.txt
-
-Erreur de permissions
----------------------
-
-Sur Linux/MacOS, vous pourriez avoir besoin de :
-
-.. code-block:: bash
-
-   sudo chown -R $USER:$USER .
-   chmod +x manage.py
-
-Validation de l'installation
-============================
-
-Pour vérifier que l'installation est complète :
-
-1. **Serveur démarré** : http://127.0.0.1:8000/
-2. **Admin accessible** : http://127.0.0.1:8000/admin/
-3. **API fonctionnelle** : http://127.0.0.1:8000/api/
-4. **Tests passent** : ``python manage.py test``
+- **Erreur de connexion à la base de données** : Vérifiez les paramètres dans `.env`
+- **Erreur CORS** : Vérifiez CORS_ALLOWED_ORIGINS dans settings.py
+- **Erreur de dépendances** : Réinstallez avec ``pip install -r requirements.txt``
+- **Erreur de migrations** : Essayez ``python manage.py migrate --run-syncdb``
 
 Prochaines étapes
-=================
+---------------
 
-Une fois l'installation terminée :
-
-1. Consultez le guide :doc:`configuration` pour personnaliser l'API
-2. Lisez le guide :doc:`utilisation` pour commencer à utiliser l'API
-3. Explorez la documentation des modules pour comprendre l'architecture
+1. Consultez le guide de :doc:`configuration` pour la configuration avancée
+2. Explorez la documentation des :doc:`api/index` pour comprendre les endpoints
+3. Testez l'authentification avec :doc:`authentication/index`

@@ -3,8 +3,7 @@ Sérialiseurs Users
 
 Les sérialiseurs du module Users gèrent la sérialisation des utilisateurs et profils avec des fonctionnalités avancées.
 
-Fonctionnalités
-===============
+# Fonctionnalités
 
 - **Sérialisation utilisateurs** : Conversion des modèles User en JSON
 - **Gestion des profils** : Sérialiseurs pour ClientProfile et EmployeProfile

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Recherche" href="../search.html" /><link rel="next" title="Module Users - Gestion des Utilisateurs" href="../users/index.html" /><link rel="prev" title="Vue Token JWT" href="views/token.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Recherche" href="../search.html" /><link rel="next" title="Module Users - Gestion des Utilisateurs" href="../users/index.html" /><link rel="prev" title="Validateur de Mot de Passe" href="validators/password_validator.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>Permissions - Documentation ApiJO 0.1</title>
@@ -201,7 +201,7 @@
 <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Module API - Gestion des Entités des Jeux Olympiques</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Module API - Gestion des Entités des Jeux Olympiques</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../api/models/index.html">Modèles Api</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Modèles Api</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/models/discipline.html">Discipline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/models/discipline.html">Modele Discipline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/models/lieu.html">Modèle Lieu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/models/evenement.html">Modèle Evenement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/models/epreuve.html">Modèle Epreuve</a></li>
@@ -228,70 +228,25 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Module Authentication - Système d’Authentification JWT</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Module Authentication - Système d’Authentification JWT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="validators/index.html">Validateurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="validators/index.html#securite-renforcee">Sécurité renforcée</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sécurité renforcée</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html">Validateur Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html#utilisation-dans-les-serialiseurs">Utilisation dans les sérialiseurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html">Validateur de Mot de Passe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html#regles-de-securite">Règles de sécurité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html#configuration-django">Configuration Django</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html#utilisation-automatique">Utilisation automatique</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html#exemples">Exemples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="serializers/index.html">Sérialiseurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="serializers/index.html#fonctionnalites">Fonctionnalités</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Fonctionnalités</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="serializers/index.html">Sérialiseurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sérialiseurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="serializers/client.html">Sérialiseur Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="serializers/employee.html">Sérialiseur Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/employee.html#differences-avec-clientregisterserializer">Différences avec ClientRegisterSerializer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="serializers/token.html">Sérialiseur Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#reponse-enrichie">Réponse enrichie</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#validation-des-identifiants">Validation des identifiants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="serializers/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="views/index.html">Vues d’Authentification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="views/index.html#endpoints-disponibles">Endpoints disponibles</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="views/index.html#architecture-des-permissions">Architecture des permissions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Architecture des permissions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="views/index.html#architecture-des-permissions">Architecture des permissions</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Architecture des permissions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="views/client.html">Vue Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/client.html#clientregisterview">ClientRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/client.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/client.html#processus-d-inscription">Processus d’inscription</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/client.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/client.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/client.html#utilisation-cote-client">Utilisation côté client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="views/employee.html">Vue Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/employee.html#employeeregisterview">EmployeeRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/employee.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/employee.html#processus-de-creation">Processus de création</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/employee.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/employee.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/employee.html#securite">Sécurité</a></li>
 <li class="toctree-l3"><a class="reference internal" href="views/token.html">Vue Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#customtokenobtainpairview">CustomTokenObtainPairView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#reponse-complete">Réponse complète</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#endpoint-de-rafraichissement">Endpoint de rafraîchissement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="views/token.html#configuration-jwt">Configuration JWT</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="validators/index.html">Validateurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Validateurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="validators/email_validator.html">Validateur Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators/password_validator.html">Validateur de Mot de Passe</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#permissions-disponibles">Permissions disponibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#architecture-des-permissions">Architecture des permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exemples-d-utilisation">Exemples d’utilisation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../users/index.html">Module Users - Gestion des Utilisateurs</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Module Users - Gestion des Utilisateurs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -356,9 +311,6 @@
 <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html#problemes-courants">Problèmes courants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html#validation-de-l-installation">Validation de l’installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation.html#prochaines-etapes">Prochaines étapes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration.html#configuration-django">Configuration Django</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration.html#configuration-des-modeles">Configuration des modèles</a></li>
@@ -521,81 +473,6 @@ Utilisée pour les opérations sensibles nécessitant les plus hauts privilèges
 
 </dd></dl>
 
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Lien vers cette rubrique">¶</a></h2>
-<p>Le module <strong>permissions</strong> définit les classes de permissions personnalisées basées sur les rôles utilisateurs.</p>
-</section>
-</section>
-<section id="permissions-disponibles">
-<h1>Permissions disponibles<a class="headerlink" href="#permissions-disponibles" title="Lien vers cette rubrique">¶</a></h1>
-<section id="isadmin">
-<h2>IsAdmin<a class="headerlink" href="#isadmin" title="Lien vers cette rubrique">¶</a></h2>
-<p><strong>Usage :</strong> Accès réservé aux administrateurs uniquement</p>
-<ul class="simple">
-<li><p>Vérifie que l’utilisateur est authentifié</p></li>
-<li><p>Vérifie que l’utilisateur a le rôle “admin”</p></li>
-<li><p>Utilisée pour les opérations sensibles (création/modification/suppression)</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">,</span> <span class="n">IsAdmin</span><span class="p">]</span>
-</pre></div>
-</div>
-</section>
-<section id="isadminoremploye">
-<h2>IsAdminOrEmploye<a class="headerlink" href="#isadminoremploye" title="Lien vers cette rubrique">¶</a></h2>
-<p><strong>Usage :</strong> Accès pour les administrateurs et employés</p>
-<ul class="simple">
-<li><p>Permet aux utilisateurs avec les rôles “admin” ou “employe”</p></li>
-<li><p>Exclut les clients des opérations nécessitant un statut professionnel</p></li>
-<li><p>Utilisée pour les fonctionnalités métier avancées</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">,</span> <span class="n">IsAdminOrEmploye</span><span class="p">]</span>
-</pre></div>
-</div>
-</section>
-<section id="isadminorauthenticatedreadonly">
-<h2>IsAdminOrAuthenticatedReadOnly<a class="headerlink" href="#isadminorauthenticatedreadonly" title="Lien vers cette rubrique">¶</a></h2>
-<p><strong>Usage :</strong> Admin complet, autres utilisateurs en lecture seule</p>
-<ul class="simple">
-<li><p><strong>Administrateurs</strong> : Accès complet (GET, POST, PUT, DELETE)</p></li>
-<li><p><strong>Autres utilisateurs authentifiés</strong> : Lecture seule (GET, HEAD, OPTIONS)</p></li>
-<li><p><strong>Utilisateurs non authentifiés</strong> : Aucun accès</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAdminOrAuthenticatedReadOnly</span><span class="p">]</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="architecture-des-permissions">
-<h1>Architecture des permissions<a class="headerlink" href="#architecture-des-permissions" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Hiérarchie des rôles :</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Admin</strong> : Accès complet à toutes les ressources</p></li>
-<li><p><strong>Employé</strong> : Accès aux fonctionnalités métier</p></li>
-<li><p><strong>Client</strong> : Accès limité aux ressources publiques</p></li>
-</ol>
-<p><strong>Utilisation dans les vues :</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lecture publique, écriture admin</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">EvenementListView</span><span class="p">(</span><span class="n">ListAPIView</span><span class="p">):</span>
-    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AllowAny</span><span class="p">]</span>  <span class="c1"># Lecture</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">EvenementCreateView</span><span class="p">(</span><span class="n">CreateAPIView</span><span class="p">):</span>
-    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">,</span> <span class="n">IsAdmin</span><span class="p">]</span>  <span class="c1"># Écriture</span>
-</pre></div>
-</div>
-</section>
-<section id="exemples-d-utilisation">
-<h1>Exemples d’utilisation<a class="headerlink" href="#exemples-d-utilisation" title="Lien vers cette rubrique">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">authentication.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAdmin</span><span class="p">,</span> <span class="n">IsAdminOrEmploye</span>
-
-<span class="c1"># Vue réservée aux admins</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">AdminOnlyView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
-    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">,</span> <span class="n">IsAdmin</span><span class="p">]</span>
-
-<span class="c1"># Vue pour le personnel (admin + employés)</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">StaffView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
-    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">,</span> <span class="n">IsAdminOrEmploye</span><span class="p">]</span>
-</pre></div>
-</div>
 </section>
 
         </article>
@@ -612,14 +489,14 @@ Utilisée pour les opérations sensibles nécessitant les plus hauts privilèges
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="views/token.html">
+          <a class="prev-page" href="validators/password_validator.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Vue Token JWT</div>
+                <div class="title">Validateur de Mot de Passe</div>
                 
               </div>
             </a>
@@ -666,17 +543,8 @@ Utilisée pour les opérations sensibles nécessitant les plus hauts privilèges
 <li><a class="reference internal" href="#authentication.permissions.IsAdminOrEmploye.has_permission"><code class="docutils literal notranslate"><span class="pre">IsAdminOrEmploye.has_permission()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#permissions-disponibles">Permissions disponibles</a><ul>
-<li><a class="reference internal" href="#isadmin">IsAdmin</a></li>
-<li><a class="reference internal" href="#isadminoremploye">IsAdminOrEmploye</a></li>
-<li><a class="reference internal" href="#isadminorauthenticatedreadonly">IsAdminOrAuthenticatedReadOnly</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#architecture-des-permissions">Architecture des permissions</a></li>
-<li><a class="reference internal" href="#exemples-d-utilisation">Exemples d’utilisation</a></li>
 </ul>
 
           </div>

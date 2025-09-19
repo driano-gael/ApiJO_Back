@@ -3,37 +3,13 @@ Gestionnaires (Managers)
 
 Ce module contient les gestionnaires personnalisés pour la gestion des utilisateurs.
 
-UserManager
------------
 
 .. autoclass:: users.managers.UserManager
    :members:
    :undoc-members:
    :show-inheritance:
 
-   **Exemple d'utilisation :**
 
-   .. code-block:: python
-
-      from users.managers import UserManager
-
-      # Créer un utilisateur standard
-      user = UserManager().create_user(
-          email="user@example.com",
-          password="motdepasse123"
-      )
-
-      # Créer un administrateur
-      admin = UserManager().create_admin(
-          email="admin@example.com",
-          password="motdepasse123"
-      )
-
-      # Créer un superutilisateur
-      superuser = UserManager().create_superuser(
-          email="super@example.com",
-          password="motdepasse123"
-      )
 
    **Notes importantes :**
 

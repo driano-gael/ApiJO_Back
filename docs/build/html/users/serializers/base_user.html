@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Recherche" href="../../search.html" /><link rel="next" title="Sérialiseur Client" href="client.html" /><link rel="prev" title="Sérialiseurs Users" href="index.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Recherche" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>Sérialiseur User (Base) - Documentation ApiJO 0.1</title>
@@ -198,10 +198,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Modules de l'API</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">Module API - Gestion des Entités des Jeux Olympiques</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Module API - Gestion des Entités des Jeux Olympiques</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../api/models/index.html">Modèles Api</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Modèles Api</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/models/discipline.html">Discipline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/models/discipline.html">Modele Discipline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/lieu.html">Modèle Lieu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/evenement.html">Modèle Evenement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/epreuve.html">Modèle Epreuve</a></li>
@@ -228,137 +228,36 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../authentication/index.html">Module Authentication - Système d’Authentification JWT</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Module Authentication - Système d’Authentification JWT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/validators/index.html">Validateurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/validators/index.html#securite-renforcee">Sécurité renforcée</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sécurité renforcée</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html">Validateur Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#utilisation-dans-les-serialiseurs">Utilisation dans les sérialiseurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html">Validateur de Mot de Passe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#regles-de-securite">Règles de sécurité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#configuration-django">Configuration Django</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#utilisation-automatique">Utilisation automatique</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#exemples">Exemples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/serializers/index.html">Sérialiseurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/serializers/index.html#fonctionnalites">Fonctionnalités</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Fonctionnalités</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/serializers/index.html">Sérialiseurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sérialiseurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/client.html">Sérialiseur Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/employee.html">Sérialiseur Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/employee.html#differences-avec-clientregisterserializer">Différences avec ClientRegisterSerializer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html">Sérialiseur Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#reponse-enrichie">Réponse enrichie</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#validation-des-identifiants">Validation des identifiants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/views/index.html">Vues d’Authentification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/views/index.html#endpoints-disponibles">Endpoints disponibles</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/views/index.html#architecture-des-permissions">Architecture des permissions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Architecture des permissions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/views/index.html">Vues d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Vues d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html">Vue Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#clientregisterview">ClientRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#processus-d-inscription">Processus d’inscription</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#utilisation-cote-client">Utilisation côté client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html">Vue Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#employeeregisterview">EmployeeRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#processus-de-creation">Processus de création</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#securite">Sécurité</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html">Vue Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#customtokenobtainpairview">CustomTokenObtainPairView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#reponse-complete">Réponse complète</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#endpoint-de-rafraichissement">Endpoint de rafraîchissement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#configuration-jwt">Configuration JWT</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/validators/index.html">Validateurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Validateurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html">Validateur Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html">Validateur de Mot de Passe</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html">Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html#permissions-disponibles">Permissions disponibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html#architecture-des-permissions">Architecture des permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html#exemples-d-utilisation">Exemples d’utilisation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Module Users - Gestion des Utilisateurs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Module Users - Gestion des Utilisateurs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../models/index.html">Modèles Utilisateurs</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../models/index.html#architecture-des-modeles">Architecture des modèles</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Architecture des modèles</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html">Modèle User (Base)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#caracteristiques-principales">Caractéristiques principales</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#attributs-du-modele">Attributs du modèle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#methodes-personnalisees">Méthodes personnalisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#configuration-django">Configuration Django</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#exemples-d-utilisation">Exemples d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#relations-avec-les-profils">Relations avec les profils</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/base_user.html#avantages-du-modele-personnalise">Avantages du modèle personnalisé</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html">Modèle ClientProfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html#attributs-du-modele">Attributs du modèle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html#fonctionnalites-automatiques">Fonctionnalités automatiques</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html#securite-et-confidentialite">Sécurité et confidentialité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/client_profile.html#exemples-d-usage-metier">Exemples d’usage métier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html">Modèle EmployeProfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html#attributs-du-modele">Attributs du modèle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html#contraintes-et-validations">Contraintes et validations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html#gestion-professionnelle">Gestion professionnelle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../models/employe_profile.html#differences-avec-clientprofile">Différences avec ClientProfile</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="index.html">Sérialiseurs Users</a></li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html#fonctionnalites">Fonctionnalités</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Fonctionnalités</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Sérialiseur User (Base)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#champs-du-serialiseur">Champs du sérialiseur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#methodes-personnalisees">Méthodes personnalisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#securite">Sécurité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html">Sérialiseur Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#champs-du-serialiseur">Champs du sérialiseur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#relations-optimisees">Relations optimisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client.html#usage-dans-les-vues">Usage dans les vues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employe.html">Sérialiseur Employé</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employe.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employe.html#champs-du-serialiseur">Champs du sérialiseur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employe.html#relations-optimisees">Relations optimisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employe.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="employe.html#usage-professionnel">Usage professionnel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admin.html">Sérialiseur Admin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admin.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admin.html#champs-etendus">Champs étendus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admin.html#usage-administratif">Usage administratif</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admin.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="admin.html#securite">Sécurité</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../managers.html">Gestionnaires (Managers)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Module Users</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Module Users</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/base_user.html">Modèle User (Base)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/admin.html">Modèle AdminProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin.html">Sérialiseur Admin</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#problemes-courants">Problèmes courants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#validation-de-l-installation">Validation de l’installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#prochaines-etapes">Prochaines étapes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html#configuration-django">Configuration Django</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html#configuration-des-modeles">Configuration des modèles</a></li>
@@ -507,82 +406,6 @@ pour l’API REST, avec gestion sécurisée des mots de passe.</p>
 
 </dd></dl>
 
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Lien vers cette rubrique">¶</a></h2>
-<p>Le <strong>UserSerializer</strong> gère la sérialisation du modèle User personnalisé avec gestion sécurisée des mots de passe.</p>
-</section>
-</section>
-<section id="fonctionnalites">
-<h1>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Lien vers cette rubrique">¶</a></h1>
-<ul class="simple">
-<li><p><strong>Écriture seule</strong> : Le mot de passe n’apparaît jamais dans les réponses JSON</p></li>
-<li><p><strong>Hachage automatique</strong> : Utilise <cite>set_password()</cite> pour le hachage sécurisé</p></li>
-<li><p><strong>Validation</strong> : Applique les règles de validation Django</p></li>
-</ul>
-</section>
-<section id="champs-du-serialiseur">
-<h1>Champs du sérialiseur<a class="headerlink" href="#champs-du-serialiseur" title="Lien vers cette rubrique">¶</a></h1>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.serializers.base_user.id">
-<span class="sig-prename descclassname"><span class="pre">users.serializers.base_user.</span></span><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">IntegerField</span> <span class="pre">(read-only)</span></em><a class="headerlink" href="#users.serializers.base_user.id" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Identifiant unique de l’utilisateur</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.serializers.base_user.email">
-<span class="sig-prename descclassname"><span class="pre">users.serializers.base_user.</span></span><span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">EmailField</span></em><a class="headerlink" href="#users.serializers.base_user.email" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Adresse email unique servant d’identifiant</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.serializers.base_user.password">
-<span class="sig-prename descclassname"><span class="pre">users.serializers.base_user.</span></span><span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CharField</span> <span class="pre">(write-only)</span></em><a class="headerlink" href="#users.serializers.base_user.password" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Mot de passe en clair pour création/mise à jour (jamais exposé en lecture)</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.serializers.base_user.role">
-<span class="sig-prename descclassname"><span class="pre">users.serializers.base_user.</span></span><span class="sig-name descname"><span class="pre">role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CharField</span></em><a class="headerlink" href="#users.serializers.base_user.role" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Rôle de l’utilisateur (client, employe, admin)</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.serializers.base_user.is_active">
-<span class="sig-prename descclassname"><span class="pre">users.serializers.base_user.</span></span><span class="sig-name descname"><span class="pre">is_active</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">BooleanField</span></em><a class="headerlink" href="#users.serializers.base_user.is_active" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Statut actif de l’utilisateur</p>
-</dd></dl>
-
-</section>
-<section id="methodes-personnalisees">
-<h1>Méthodes personnalisées<a class="headerlink" href="#methodes-personnalisees" title="Lien vers cette rubrique">¶</a></h1>
-<p>Crée un nouvel utilisateur avec hachage sécurisé du mot de passe.</p>
-<p>Met à jour un utilisateur existant, avec gestion spéciale du mot de passe si fourni.</p>
-</section>
-<section id="exemple-d-utilisation">
-<h1>Exemple d’utilisation<a class="headerlink" href="#exemple-d-utilisation" title="Lien vers cette rubrique">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sérialisation d&#39;un utilisateur (sans mot de passe)</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s1">&#39;user@example.com&#39;</span><span class="p">)</span>
-<span class="n">serializer</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">data</span>
-
-<span class="c1"># Création via sérialiseur</span>
-<span class="n">serializer</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span>
-    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;newuser@example.com&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;motdepassesecurise123&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;client&#39;</span>
-<span class="p">})</span>
-<span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Le mot de passe sera haché automatiquement</span>
-</pre></div>
-</div>
-</section>
-<section id="securite">
-<h1>Sécurité<a class="headerlink" href="#securite" title="Lien vers cette rubrique">¶</a></h1>
-<ul class="simple">
-<li><p><strong>Pas de fuite de mot de passe</strong> : Le champ password est write-only</p></li>
-<li><p><strong>Hachage automatique</strong> : Utilisation de la méthode Django <cite>set_password()</cite></p></li>
-<li><p><strong>Validation</strong> : Respect des règles de sécurité configurées</p></li>
-</ul>
 </section>
 
         </article>
@@ -590,26 +413,8 @@ pour l’API REST, avec gestion sécurisée des mots de passe.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="client.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Sérialiseur Client</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="index.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Sérialiseurs Users</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -652,21 +457,8 @@ pour l’API REST, avec gestion sécurisée des mots de passe.</p>
 <li><a class="reference internal" href="#users.serializers.base_user.UserSerializer.update"><code class="docutils literal notranslate"><span class="pre">UserSerializer.update()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#fonctionnalites">Fonctionnalités</a></li>
-<li><a class="reference internal" href="#champs-du-serialiseur">Champs du sérialiseur</a><ul>
-<li><a class="reference internal" href="#users.serializers.base_user.id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
-<li><a class="reference internal" href="#users.serializers.base_user.email"><code class="docutils literal notranslate"><span class="pre">email</span></code></a></li>
-<li><a class="reference internal" href="#users.serializers.base_user.password"><code class="docutils literal notranslate"><span class="pre">password</span></code></a></li>
-<li><a class="reference internal" href="#users.serializers.base_user.role"><code class="docutils literal notranslate"><span class="pre">role</span></code></a></li>
-<li><a class="reference internal" href="#users.serializers.base_user.is_active"><code class="docutils literal notranslate"><span class="pre">is_active</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#methodes-personnalisees">Méthodes personnalisées</a></li>
-<li><a class="reference internal" href="#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li><a class="reference internal" href="#securite">Sécurité</a></li>
 </ul>
 
           </div>

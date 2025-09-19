@@ -1,7 +1,7 @@
-Sérialiseur Client
+Modèle AdminProfile
 ==================
 
-.. automodule:: users.serializers.client
+.. automodule:: users.models.admin
    :members:
    :undoc-members:
    :show-inheritance:

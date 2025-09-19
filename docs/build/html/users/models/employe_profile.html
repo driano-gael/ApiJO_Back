@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Recherche" href="../../search.html" /><link rel="next" title="Sérialiseurs Users" href="../serializers/index.html" /><link rel="prev" title="Modèle ClientProfile" href="client_profile.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Recherche" href="../../search.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>Modèle EmployeProfile - Documentation ApiJO 0.1</title>
@@ -198,10 +198,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Modules de l'API</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">Module API - Gestion des Entités des Jeux Olympiques</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Module API - Gestion des Entités des Jeux Olympiques</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../api/models/index.html">Modèles Api</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Modèles Api</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/models/discipline.html">Discipline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/models/discipline.html">Modele Discipline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/lieu.html">Modèle Lieu</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/evenement.html">Modèle Evenement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../api/models/epreuve.html">Modèle Epreuve</a></li>
@@ -228,137 +228,36 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../authentication/index.html">Module Authentication - Système d’Authentification JWT</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Module Authentication - Système d’Authentification JWT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/validators/index.html">Validateurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/validators/index.html#securite-renforcee">Sécurité renforcée</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sécurité renforcée</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html">Validateur Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#utilisation-dans-les-serialiseurs">Utilisation dans les sérialiseurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html">Validateur de Mot de Passe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#regles-de-securite">Règles de sécurité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#configuration-django">Configuration Django</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#utilisation-automatique">Utilisation automatique</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#texte-d-aide">Texte d’aide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html#exemples">Exemples</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/serializers/index.html">Sérialiseurs d’Authentification</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/serializers/index.html#fonctionnalites">Fonctionnalités</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Fonctionnalités</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/serializers/index.html">Sérialiseurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Sérialiseurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/client.html">Sérialiseur Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/employee.html">Sérialiseur Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/employee.html#differences-avec-clientregisterserializer">Différences avec ClientRegisterSerializer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html">Sérialiseur Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#reponse-enrichie">Réponse enrichie</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#validation-des-identifiants">Validation des identifiants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#messages-d-erreur">Messages d’erreur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/serializers/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/views/index.html">Vues d’Authentification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/views/index.html#endpoints-disponibles">Endpoints disponibles</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/views/index.html#architecture-des-permissions">Architecture des permissions</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Architecture des permissions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/views/index.html">Vues d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Vues d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html">Vue Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#clientregisterview">ClientRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#processus-d-inscription">Processus d’inscription</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/client.html#utilisation-cote-client">Utilisation côté client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html">Vue Employee</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#employeeregisterview">EmployeeRegisterView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#processus-de-creation">Processus de création</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/employee.html#securite">Sécurité</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html">Vue Token JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#customtokenobtainpairview">CustomTokenObtainPairView</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#reponse-complete">Réponse complète</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#gestion-des-erreurs">Gestion des erreurs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#integration-frontend">Intégration frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#endpoint-de-rafraichissement">Endpoint de rafraîchissement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../authentication/views/token.html#configuration-jwt">Configuration JWT</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../authentication/validators/index.html">Validateurs d’Authentification</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Validateurs d’Authentification</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/email_validator.html">Validateur Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../authentication/validators/password_validator.html">Validateur de Mot de Passe</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html">Permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html#permissions-disponibles">Permissions disponibles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html#architecture-des-permissions">Architecture des permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../authentication/permissions.html#exemples-d-utilisation">Exemples d’utilisation</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Module Users - Gestion des Utilisateurs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Module Users - Gestion des Utilisateurs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html">Modèles Utilisateurs</a></li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html#architecture-des-modeles">Architecture des modèles</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Architecture des modèles</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="base_user.html">Modèle User (Base)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#caracteristiques-principales">Caractéristiques principales</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#attributs-du-modele">Attributs du modèle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#methodes-personnalisees">Méthodes personnalisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#configuration-django">Configuration Django</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#exemples-d-utilisation">Exemples d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#relations-avec-les-profils">Relations avec les profils</a></li>
-<li class="toctree-l3"><a class="reference internal" href="base_user.html#avantages-du-modele-personnalise">Avantages du modèle personnalisé</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html">Modèle ClientProfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html#attributs-du-modele">Attributs du modèle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html#fonctionnalites-automatiques">Fonctionnalités automatiques</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html#securite-et-confidentialite">Sécurité et confidentialité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="client_profile.html#exemples-d-usage-metier">Exemples d’usage métier</a></li>
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Modèle EmployeProfile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#attributs-du-modele">Attributs du modèle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#contraintes-et-validations">Contraintes et validations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#utilisation">Utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gestion-professionnelle">Gestion professionnelle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#differences-avec-clientprofile">Différences avec ClientProfile</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../serializers/index.html">Sérialiseurs Users</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../serializers/index.html#fonctionnalites">Fonctionnalités</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Fonctionnalités</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/base_user.html">Sérialiseur User (Base)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/base_user.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/base_user.html#champs-du-serialiseur">Champs du sérialiseur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/base_user.html#methodes-personnalisees">Méthodes personnalisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/base_user.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/base_user.html#securite">Sécurité</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/client.html">Sérialiseur Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/client.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/client.html#champs-du-serialiseur">Champs du sérialiseur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/client.html#relations-optimisees">Relations optimisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/client.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/client.html#usage-dans-les-vues">Usage dans les vues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employe.html">Sérialiseur Employé</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employe.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employe.html#champs-du-serialiseur">Champs du sérialiseur</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employe.html#relations-optimisees">Relations optimisées</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employe.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/employe.html#usage-professionnel">Usage professionnel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/admin.html">Sérialiseur Admin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/admin.html#fonctionnalites">Fonctionnalités</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/admin.html#champs-etendus">Champs étendus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/admin.html#usage-administratif">Usage administratif</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/admin.html#exemple-d-utilisation">Exemple d’utilisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../serializers/admin.html#securite">Sécurité</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../managers.html">Gestionnaires (Managers)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Module Users</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Module Users</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="base_user.html">Modèle User (Base)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin.html">Modèle AdminProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../serializers/admin.html">Sérialiseur Admin</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#problemes-courants">Problèmes courants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#validation-de-l-installation">Validation de l’installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html#prochaines-etapes">Prochaines étapes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html#configuration-django">Configuration Django</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration.html#configuration-des-modeles">Configuration des modèles</a></li>
@@ -521,148 +420,6 @@ object the first time, the query is executed.</p>
 
 </dd></dl>
 
-<section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Lien vers cette rubrique">¶</a></h2>
-<p>Le modèle <strong>EmployeProfile</strong> étend les informations de base de l’utilisateur avec des données professionnelles spécifiques aux employés.</p>
-</section>
-</section>
-<section id="fonctionnalites">
-<h1>Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Lien vers cette rubrique">¶</a></h1>
-<ul class="simple">
-<li><p>Nom et prénom de l’employé</p></li>
-<li><p>Matricule unique (identifiant professionnel)</p></li>
-<li><p>Identifiant téléphonique professionnel</p></li>
-</ul>
-<ul class="simple">
-<li><p>Création contrôlée par les administrateurs</p></li>
-<li><p>Traçabilité des employés via matricule</p></li>
-<li><p>Identification professionnelle sécurisée</p></li>
-</ul>
-<ul class="simple">
-<li><p>Lié de manière unique à un utilisateur User</p></li>
-<li><p>Création par les administrateurs uniquement</p></li>
-</ul>
-</section>
-<section id="attributs-du-modele">
-<h1>Attributs du modèle<a class="headerlink" href="#attributs-du-modele" title="Lien vers cette rubrique">¶</a></h1>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.models.employe.user">
-<span class="sig-prename descclassname"><span class="pre">users.models.employe.</span></span><span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">OneToOneField</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="base_user.html#users.models.base_user.User" title="users.models.base_user.User"><span class="pre">User</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">related_name</span></span><span class="o"><span class="pre">=</span></span><span class="s"><span class="pre">'employe_profile'</span></span><span class="p"><span class="pre">)</span></span></em><a class="headerlink" href="#users.models.employe.user" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Relation unique vers l’utilisateur de base</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.models.employe.nom">
-<span class="sig-prename descclassname"><span class="pre">users.models.employe.</span></span><span class="sig-name descname"><span class="pre">nom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CharField</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">100</span></span><span class="p"><span class="pre">)</span></span></em><a class="headerlink" href="#users.models.employe.nom" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Nom de famille de l’employé</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.models.employe.prenom">
-<span class="sig-prename descclassname"><span class="pre">users.models.employe.</span></span><span class="sig-name descname"><span class="pre">prenom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CharField</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">100</span></span><span class="p"><span class="pre">)</span></span></em><a class="headerlink" href="#users.models.employe.prenom" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Prénom de l’employé</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.models.employe.matricule">
-<span class="sig-prename descclassname"><span class="pre">users.models.employe.</span></span><span class="sig-name descname"><span class="pre">matricule</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CharField</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">50</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">unique</span></span><span class="o"><span class="pre">=</span></span><span class="k"><span class="pre">True</span></span><span class="p"><span class="pre">)</span></span></em><a class="headerlink" href="#users.models.employe.matricule" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Numéro de matricule unique de l’employé</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="users.models.employe.identifiant_telephone">
-<span class="sig-prename descclassname"><span class="pre">users.models.employe.</span></span><span class="sig-name descname"><span class="pre">identifiant_telephone</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CharField</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">255</span></span><span class="p"><span class="pre">)</span></span></em><a class="headerlink" href="#users.models.employe.identifiant_telephone" title="Lien vers cette définition">¶</a></dt>
-<dd><p>Identifiant téléphonique professionnel (format libre)</p>
-</dd></dl>
-
-</section>
-<section id="contraintes-et-validations">
-<h1>Contraintes et validations<a class="headerlink" href="#contraintes-et-validations" title="Lien vers cette rubrique">¶</a></h1>
-<ul class="simple">
-<li><p><strong>Contrainte d’unicité</strong> sur le matricule</p></li>
-<li><p>Empêche les doublons d’employés</p></li>
-<li><p>Facilite l’identification professionnelle</p></li>
-</ul>
-<p>La méthode <code class="docutils literal notranslate"><span class="pre">__str__()</span></code> retourne le nom complet avec matricule :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">matricule</span><span class="si">}</span><span class="s2">)&quot;</span>
-</pre></div>
-</div>
-<p>Les profils employé sont triés par nom puis prénom par défaut.</p>
-</section>
-<section id="utilisation">
-<h1>Utilisation<a class="headerlink" href="#utilisation" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Création par admin :</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lors de l&#39;inscription employé (admin uniquement)</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
-    <span class="n">email</span><span class="o">=</span><span class="s1">&#39;employe@jeux-olympiques.fr&#39;</span><span class="p">,</span>
-    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">,</span>
-    <span class="n">role</span><span class="o">=</span><span class="s1">&#39;employe&#39;</span>
-<span class="p">)</span>
-
-<span class="c1"># Création du profil professionnel</span>
-<span class="n">EmployeProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span>
-    <span class="n">nom</span><span class="o">=</span><span class="s1">&#39;Martin&#39;</span><span class="p">,</span>
-    <span class="n">prenom</span><span class="o">=</span><span class="s1">&#39;Sophie&#39;</span><span class="p">,</span>
-    <span class="n">matricule</span><span class="o">=</span><span class="s1">&#39;EMP001&#39;</span><span class="p">,</span>
-    <span class="n">identifiant_telephone</span><span class="o">=</span><span class="s1">&#39;TEL-JO-2024-001&#39;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Accès aux données :</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Via l&#39;utilisateur</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s1">&#39;employe@jeux-olympiques.fr&#39;</span><span class="p">)</span>
-<span class="n">profile</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">employe_profile</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Employé: </span><span class="si">{</span><span class="n">profile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># &quot;Martin Sophie (EMP001)&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matricule: </span><span class="si">{</span><span class="n">profile</span><span class="o">.</span><span class="n">matricule</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tel pro: </span><span class="si">{</span><span class="n">profile</span><span class="o">.</span><span class="n">identifiant_telephone</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Recherche par matricule :</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trouver un employé par matricule</span>
-<span class="n">employe</span> <span class="o">=</span> <span class="n">EmployeProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">matricule</span><span class="o">=</span><span class="s1">&#39;EMP001&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Email pro: </span><span class="si">{</span><span class="n">employe</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Statut: </span><span class="si">{</span><span class="n">employe</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="gestion-professionnelle">
-<h1>Gestion professionnelle<a class="headerlink" href="#gestion-professionnelle" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Identification d’équipe :</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lister tous les employés actifs</span>
-<span class="n">employes_actifs</span> <span class="o">=</span> <span class="n">EmployeProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-    <span class="n">user__is_active</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">user__role</span><span class="o">=</span><span class="s1">&#39;employe&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;nom&#39;</span><span class="p">,</span> <span class="s1">&#39;prenom&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">employe</span> <span class="ow">in</span> <span class="n">employes_actifs</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">employe</span><span class="o">.</span><span class="n">matricule</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">employe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Contrôle d’accès :</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vérifier les droits d&#39;un employé</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">check_employe_access</span><span class="p">(</span><span class="n">matricule</span><span class="p">,</span> <span class="n">zone</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">employe</span> <span class="o">=</span> <span class="n">EmployeProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">matricule</span><span class="o">=</span><span class="n">matricule</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">employe</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">authorize_zone_access</span><span class="p">(</span><span class="n">employe</span><span class="p">,</span> <span class="n">zone</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">EmployeProfile</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-</pre></div>
-</div>
-</section>
-<section id="differences-avec-clientprofile">
-<h1>Différences avec ClientProfile<a class="headerlink" href="#differences-avec-clientprofile" title="Lien vers cette rubrique">¶</a></h1>
-<p><strong>Champs spécifiques :</strong>
-- <code class="docutils literal notranslate"><span class="pre">matricule</span></code> (unique) au lieu de <code class="docutils literal notranslate"><span class="pre">telephone</span></code>
-- <code class="docutils literal notranslate"><span class="pre">identifiant_telephone</span></code> professionnel (format libre)
-- Pas de <code class="docutils literal notranslate"><span class="pre">cle_chiffree</span></code> (sécurité différente)</p>
-<p><strong>Usage :</strong>
-- Création par admin vs inscription libre
-- Identification professionnelle vs personnelle
-- Gestion du personnel vs gestion client</p>
 </section>
 
         </article>
@@ -670,26 +427,8 @@ object the first time, the query is executed.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../serializers/index.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Sérialiseurs Users</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="client_profile.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Modèle ClientProfile</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -734,22 +473,8 @@ object the first time, the query is executed.</p>
 <li><a class="reference internal" href="#users.models.employe.EmployeProfile.user_id"><code class="docutils literal notranslate"><span class="pre">EmployeProfile.user_id</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#fonctionnalites">Fonctionnalités</a></li>
-<li><a class="reference internal" href="#attributs-du-modele">Attributs du modèle</a><ul>
-<li><a class="reference internal" href="#users.models.employe.user"><code class="docutils literal notranslate"><span class="pre">user</span></code></a></li>
-<li><a class="reference internal" href="#users.models.employe.nom"><code class="docutils literal notranslate"><span class="pre">nom</span></code></a></li>
-<li><a class="reference internal" href="#users.models.employe.prenom"><code class="docutils literal notranslate"><span class="pre">prenom</span></code></a></li>
-<li><a class="reference internal" href="#users.models.employe.matricule"><code class="docutils literal notranslate"><span class="pre">matricule</span></code></a></li>
-<li><a class="reference internal" href="#users.models.employe.identifiant_telephone"><code class="docutils literal notranslate"><span class="pre">identifiant_telephone</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#contraintes-et-validations">Contraintes et validations</a></li>
-<li><a class="reference internal" href="#utilisation">Utilisation</a></li>
-<li><a class="reference internal" href="#gestion-professionnelle">Gestion professionnelle</a></li>
-<li><a class="reference internal" href="#differences-avec-clientprofile">Différences avec ClientProfile</a></li>
 </ul>
 
           </div>
