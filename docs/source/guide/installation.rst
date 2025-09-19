@@ -139,6 +139,12 @@ L'API devrait être accessible à http://localhost:8000/
 
 Accédez à http://localhost:8000/api/evenement/
 
+4. Acceder au Swagger UI
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Accédez à http://localhost:8000/api/docs/swagger
+
+
 Dépannage
 ~~~~~~~~~
 
