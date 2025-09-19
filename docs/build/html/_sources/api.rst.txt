@@ -1,0 +1,64 @@
+API
+===
+
+Modules pour la gestion des entités sportives et commerciales.
+
+.. automodule:: api.models.lieu
+   :members:
+   :undoc-members:
+
+.. automodule:: api.models.discipline
+   :members:
+   :undoc-members:
+
+.. automodule:: api.models.epreuve
+   :members:
+   :undoc-members:
+
+.. automodule:: api.models.evenement
+   :members:
+   :undoc-members:
+
+.. automodule:: api.models.offre
+   :members:
+   :undoc-members:
+
+.. automodule:: api.serializers.lieu
+   :members:
+   :undoc-members:
+
+.. automodule:: api.serializers.discipline
+   :members:
+   :undoc-members:
+
+.. automodule:: api.serializers.epreuve
+   :members:
+   :undoc-members:
+
+.. automodule:: api.serializers.evenement
+   :members:
+   :undoc-members:
+
+.. automodule:: api.serializers.offre
+   :members:
+   :undoc-members:
+
+.. automodule:: api.views.lieu
+   :members:
+   :undoc-members:
+
+.. automodule:: api.views.discipline
+   :members:
+   :undoc-members:
+
+.. automodule:: api.views.epreuve
+   :members:
+   :undoc-members:
+
+.. automodule:: api.views.evenement
+   :members:
+   :undoc-members:
+
+.. automodule:: api.views.offre
+   :members:
+   :undoc-members:

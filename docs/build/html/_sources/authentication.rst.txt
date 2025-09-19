@@ -1,0 +1,36 @@
+Authentication
+==============
+
+Vues et sérializers pour l'inscription et l'authentification des utilisateurs.
+
+.. automodule:: authentication.serializers.client
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.serializers.employee
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.serializers.token
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.validators.email
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.validators.password
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.views.client
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.views.employee
+   :members:
+   :undoc-members:
+
+.. automodule:: authentication.views.token
+   :members:
+   :undoc-members:

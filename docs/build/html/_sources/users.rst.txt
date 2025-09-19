@@ -1,0 +1,40 @@
+Users
+=====
+
+Modèles et sérializers pour la gestion des utilisateurs.
+
+.. automodule:: users.models.base_user
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: users.models.client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: users.models.employe
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: users.models.admin
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: users.serializers.user
+   :members:
+   :undoc-members:
+
+.. automodule:: users.serializers.client
+   :members:
+   :undoc-members:
+
+.. automodule:: users.serializers.employee
+   :members:
+   :undoc-members:
+
+.. automodule:: users.serializers.admin
+   :members:
+   :undoc-members:
