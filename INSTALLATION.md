@@ -122,9 +122,3 @@ Problèmes courants :
 - **Erreur de dépendances** : Réinstallez avec `pip install -r requirements.txt`
 - **Erreur de migrations** : Essayez `python manage.py migrate --run-syncdb`
 - **Variables d'environnement non chargées** : Vérifiez que le fichier `.env` est bien à la racine du projet
-
-## Prochaines étapes
-
-1. Consultez le guide de configuration pour la configuration avancée
-2. Explorez la documentation de l'API pour comprendre les endpoints
-3. Testez l'authentification
