@@ -106,8 +106,12 @@ python manage.py runserver
 ```
 L'API devrait être accessible à http://localhost:8000/
 
-### 3. Vérifier l'interface d'administration
-Accédez à http://localhost:8000/admin avec les identifiants du superutilisateur
+### 3. Vérifier l'acces aux Endpoint
+Accédez à http://localhost:8000/api/evenement/
+
+### 4. Acces Swagger
+
+Accédez à http://localhost:8000/api/docs/swagger/
 
 ## Dépannage
 
