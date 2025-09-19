@@ -60,8 +60,8 @@ DEBUG=True
 CORS_ALLOWED_ORIGINS=http:ip_du_frontEnt
 CORS_ALLOW_CREDENTIALS=True
 
-# Configuration Admin par défaut (optionnel)
-ADMIN_EMAIL=admin@admin.com
+# Configuration Admin par défaut
+ADMIN_EMAIL=mail@admin.com
 ADMIN_PASSWORD=@DminPass123
 ADMIN_NOM=Admin
 ADMIN_PRENOM=admin
@@ -110,7 +110,7 @@ L'API devrait être accessible à http://localhost:8000/
 Accédez à http://localhost:8000/api/evenement/
 
 ### 4. Acces Swagger
-
+une fois le serveur lancé:
 Accédez à http://localhost:8000/api/docs/swagger/
 
 ## Dépannage
