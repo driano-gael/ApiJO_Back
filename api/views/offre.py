@@ -28,7 +28,7 @@ class OffreListView(rest_framework.generics.ListAPIView):
     """
     queryset = Offre.objects.order_by("nb_personne", "montant")
     serializer_class = OffreSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 class OffreDetailView(rest_framework.generics.RetrieveAPIView):
@@ -48,7 +48,7 @@ class OffreDetailView(rest_framework.generics.RetrieveAPIView):
     """
     queryset = Offre.objects.all()
     serializer_class = OffreSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 class OffreCreateView(rest_framework.generics.CreateAPIView):
