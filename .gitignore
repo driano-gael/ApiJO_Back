@@ -7,3 +7,11 @@ __pycache__/
 .idea/
 *.pyo
 *.db
+
+# JetBrains IDEs
+/.idea/
+*.iml
+out/
+*.iws
+*.ipr
+.DS_Store
