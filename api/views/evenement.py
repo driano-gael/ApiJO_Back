@@ -6,10 +6,10 @@ sur les événements, ainsi que des vues spécialisées pour récupérer des év
 par épreuve.
 """
 
-import rest_framework.generics
+from rest_framework import generics
 from django.shortcuts import get_object_or_404
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.exceptions import NotFound
+
 from api.models.evenement import Evenement
 from api.models.epreuve import Epreuve
 from api.serializers.evenement import EvenementSerializer
@@ -17,7 +17,7 @@ from authentication.permissions import IsAdmin
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
-class EvenementListView(rest_framework.generics.ListAPIView):
+class EvenementListView(generics.ListAPIView):
     """
     Vue pour lister tous les événements.
 
@@ -36,7 +36,7 @@ class EvenementListView(rest_framework.generics.ListAPIView):
     permission_classes = [AllowAny]
 
 
-class EvenementDetailView(rest_framework.generics.RetrieveAPIView):
+class EvenementDetailView(generics.RetrieveAPIView):
     """
     Vue pour récupérer les détails d'un événement spécifique.
 
@@ -56,42 +56,22 @@ class EvenementDetailView(rest_framework.generics.RetrieveAPIView):
     permission_classes = [AllowAny]
 
 
-class EvenementByEpreuveView(APIView):
+
+class EvenementByEpreuveView(generics.RetrieveAPIView):
     """
     Vue pour récupérer un événement par l'ID d'une épreuve.
-
-    Permet de récupérer l'événement associé à une épreuve spécifique.
-    Retourne une erreur 404 si aucun événement n'est associé à l'épreuve.
-    Accessible à tous les utilisateurs (authentifiés ou non).
-
-    :cvar permission_classes: Permissions requises pour accéder à la vue
-    :type permission_classes: list
     """
+    serializer_class = EvenementSerializer
     permission_classes = [AllowAny]
 
-    def get(self, request, pk, *args, **kwargs):
-        """
-        Récupère l'événement associé à une épreuve.
-
-        :param request: La requête HTTP
-        :type request: Request
-        :param pk: L'identifiant de l'épreuve
-        :type pk: int
-        :return: Les données de l'événement ou une erreur 404
-        :rtype: Response
-        """
-        epreuve = get_object_or_404(Epreuve, id=pk)
-        evenement = epreuve.evenement
-        if evenement is None:
-            return Response(
-                {"detail": "Aucun événement associé à cette épreuve."},
-                status=404
-            )
-        serializer = EvenementSerializer(evenement)
-        return Response(serializer.data)
+    def get_object(self):
+        epreuve = get_object_or_404(Epreuve, id=self.kwargs["pk"])
+        if epreuve.evenement is None:
+            raise NotFound("Aucun événement associé à cette épreuve.")
+        return epreuve.evenement
 
 
-class EvenementCreateView(rest_framework.generics.CreateAPIView):
+class EvenementCreateView(generics.CreateAPIView):
     """
     Vue pour créer un nouvel événement.
 
@@ -110,7 +90,7 @@ class EvenementCreateView(rest_framework.generics.CreateAPIView):
     permission_classes = [IsAuthenticated, IsAdmin]
 
 
-class EvenementUpdateView(rest_framework.generics.UpdateAPIView):
+class EvenementUpdateView(generics.UpdateAPIView):
     """
     Vue pour mettre à jour un événement existant.
 
@@ -130,7 +110,7 @@ class EvenementUpdateView(rest_framework.generics.UpdateAPIView):
     permission_classes = [IsAuthenticated, IsAdmin]
 
 
-class EvenementDeleteView(rest_framework.generics.DestroyAPIView):
+class EvenementDeleteView(generics.DestroyAPIView):
     """
     Vue pour supprimer un événement.
 

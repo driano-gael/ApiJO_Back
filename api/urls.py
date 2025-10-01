@@ -18,6 +18,7 @@ from api.views.discipline import *
 from api.views.epreuve import *
 from api.views.evenement import *
 from api.views.offre import *
+from api.views.ticket import TicketListView, TicketDetailView, TicketBatchCreateView
 
 urlpatterns = [
     # LIEU - Gestion des lieux sportifs
@@ -55,4 +56,8 @@ urlpatterns = [
     path('offre/create/', OffreCreateView.as_view(), name='offre-create'),
     path('offre/update/<int:pk>/', OffreUpdateView.as_view(), name='offre-update'),
     path('offre/delete/<int:pk>/', OffreDeleteView.as_view(), name='offre-delete'),
+
+    path('ticket/', TicketListView.as_view(), name='ticket-list'),# Ticket
+    path('ticket/<int:pk>/', TicketDetailView.as_view(), name='ticket-detail'),
+    path('ticket/create/', TicketBatchCreateView.as_view(), name='tickets-create'),
 ]

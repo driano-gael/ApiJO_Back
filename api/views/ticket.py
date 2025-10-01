@@ -1,10 +1,13 @@
-import rest_framework.generics
 from api.models import Ticket
 from api.serializers import TicketSerializer
 from rest_framework.permissions import IsAuthenticated
 from api.models import Offre, Evenement
+from api.serializers.ticket import PanierItemSerializer
+from rest_framework import generics, status
+from rest_framework.response import Response
 
-class TicketListView(rest_framework.generics.ListAPIView):
+
+class TicketListView(generics.ListAPIView):
     """
     Liste les tickets appartenant à l'utilisateur connecté.
 
@@ -31,9 +34,9 @@ class TicketListView(rest_framework.generics.ListAPIView):
         :return: Liste des tickets de l'utilisateur connecté.
         :rtype: QuerySet[Ticket]
         """
-        return Ticket.objects.filter(user=self.request.user).order_by("date_achat")
+        return Ticket.objects.filter(client=self.request.user.client_profile).order_by("date_achat")
 
-class TicketDetailView(rest_framework.generics.RetrieveAPIView):
+class TicketDetailView(generics.RetrieveAPIView):
     """
     Récupère les détails d'un ticket spécifique appartenant à l'utilisateur connecté.
 
@@ -60,57 +63,54 @@ class TicketDetailView(rest_framework.generics.RetrieveAPIView):
         :return: Liste des tickets de l'utilisateur connecté.
         :rtype: QuerySet[Ticket]
         """
-        return Ticket.objects.filter(user=self.request.user)
+        return Ticket.objects.filter(client=self.request.user.client_profile)
 
-class TicketCreateView(rest_framework.generics.CreateAPIView):
+
+
+
+class TicketBatchCreateView(generics.GenericAPIView):
     """
-    Crée un nouveau ticket pour l'utilisateur connecté.
+    Vue pour créer plusieurs tickets à partir du panier de l'utilisateur connecté.
 
-    Cette vue permet à un utilisateur authentifié de créer un nouveau ticket.
-    Le ticket sera automatiquement associé au ClientProfile de l'utilisateur,
-    à l'offre choisie et à l'événement lié à l'offre. Les champs qr_code et key
-    sont générés automatiquement.
-    L'accès est restreint aux utilisateurs authentifiés.
-
-    :cvar serializer_class: Sérialiseur utilisé pour valider et créer le ticket.
-    :type serializer_class: TicketSerializer
-    :cvar permission_classes: Permissions requises pour accéder à la vue.
-    :type permission_classes: list[rest_framework.permissions.BasePermission]
+    Reçoit un tableau `items` contenant `offreId`, `evenementId` et `quantity`.
+    Crée autant de tickets que nécessaire pour chaque offre.
     """
-    serializer_class = TicketSerializer
     permission_classes = [IsAuthenticated]
+    serializer_class = PanierItemSerializer
 
-    def create(self, request, *args, **kwargs):
-        """
-        Crée un ticket pour l'utilisateur connecté à partir d'une offre.
+    def post(self, request, *args, **kwargs):
+        items_data = request.data.get("items")
+        if not items_data or not isinstance(items_data, list):
+            return Response({"detail": "Le champ 'items' est requis et doit être un tableau."},
+                            status=status.HTTP_400_BAD_REQUEST)
 
-        Le corps de la requête doit contenir l'identifiant de l'offre.
-        Le ticket sera associé au client, à l'offre et à l'événement correspondant.
-        Les champs qr_code et key sont générés automatiquement.
+        tickets_created = []
 
-        :param request: Requête HTTP contenant l'identifiant de l'offre.
-        :type request: rest_framework.request.Request
-        :return: Réponse avec le ticket créé ou une erreur.
-        :rtype: rest_framework.response.Response
-        """
-        offre_id = request.data.get('offreID')
-        if not offre_id:
-            return Response({'detail': "Le champ 'offre' est requis."}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            offre = Offre.objects.get(pk=offre_id)
-        except Offre.DoesNotExist:
-            return Response({'detail': "Offre introuvable."}, status=status.HTTP_404_NOT_FOUND)
-        client_profile = getattr(request.user, 'clientprofile', None)
-        if not client_profile:
-            return Response({'detail': "Profil client introuvable pour l'utilisateur."}, status=status.HTTP_400_BAD_REQUEST)
-        evenement = request.data.get('evenementID')
-        ticket = Ticket(
-            client=client_profile,
-            evenement=offre.evenement,
-            offre=offre,
-            qr_code=str(uuid.uuid4()),
-            statut='valide'
-        )
-        ticket.save()
-        serializer = self.get_serializer(ticket)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        for item_data in items_data:
+            serializer = self.get_serializer(data=item_data)
+            serializer.is_valid(raise_exception=True)
+
+            offre = Offre.objects.get(pk=serializer.validated_data['offreId'])
+            if not offre:
+                return Response({'detail': "Offre introuvable."}, status=status.HTTP_400_BAD_REQUEST)
+
+            evenement = Evenement.objects.get(pk=serializer.validated_data['evenementId'])
+            if not offre:
+                return Response({'detail': "Evenement introuvable."}, status=status.HTTP_400_BAD_REQUEST)
+
+            client_profile = getattr(request.user, 'client_profile', None)
+            if not client_profile:
+                return Response({'detail': " client introuvable."}, status=status.HTTP_400_BAD_REQUEST)
+
+            quantity = serializer.validated_data['quantity']
+            for _ in range(quantity):
+                ticket = Ticket(
+                    client=client_profile,
+                    evenement=evenement,
+                    offre=offre,
+                    statut='valide'
+                )
+                ticket.save()
+                tickets_created.append(ticket.id)  # ou sérialiser pour renvoyer plus d'infos
+
+        return Response({"tickets": tickets_created}, status=status.HTTP_201_CREATED)
