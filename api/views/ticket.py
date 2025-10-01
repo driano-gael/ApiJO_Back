@@ -1,10 +1,7 @@
-from api.models import Ticket
-from api.serializers import TicketSerializer
+from api.serializers import TicketSerializer, OffreSerializer, EvenementSerializer
 from rest_framework.permissions import IsAuthenticated
-from api.models import Offre, Evenement
 from api.serializers.ticket import PanierItemSerializer
-from rest_framework import generics, status
-from rest_framework.response import Response
+from rest_framework import generics
 
 
 class TicketListView(generics.ListAPIView):
@@ -68,12 +65,19 @@ class TicketDetailView(generics.RetrieveAPIView):
 
 
 
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from django.db import transaction
+from api.models import Ticket
+
+
 class TicketBatchCreateView(generics.GenericAPIView):
     """
     Vue pour créer plusieurs tickets à partir du panier de l'utilisateur connecté.
 
     Reçoit un tableau `items` contenant `offreId`, `evenementId` et `quantity`.
-    Crée autant de tickets que nécessaire pour chaque offre.
+    Crée autant de tickets que possible pour chaque offre.
     """
     permission_classes = [IsAuthenticated]
     serializer_class = PanierItemSerializer
@@ -81,36 +85,51 @@ class TicketBatchCreateView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         items_data = request.data.get("items")
         if not items_data or not isinstance(items_data, list):
-            return Response({"detail": "Le champ 'items' est requis et doit être un tableau."},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"detail": "Le champ 'items' est requis et doit être un tableau."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        client_profile = getattr(request.user, 'client_profile', None)
+        if not client_profile:
+            return Response(
+                {'detail': "Client introuvable."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
         tickets_created = []
+        tickets_uncreated = []
 
         for item_data in items_data:
             serializer = self.get_serializer(data=item_data)
             serializer.is_valid(raise_exception=True)
 
-            offre = Offre.objects.get(pk=serializer.validated_data['offreId'])
-            if not offre:
-                return Response({'detail': "Offre introuvable."}, status=status.HTTP_400_BAD_REQUEST)
-
-            evenement = Evenement.objects.get(pk=serializer.validated_data['evenementId'])
-            if not offre:
-                return Response({'detail': "Evenement introuvable."}, status=status.HTTP_400_BAD_REQUEST)
-
-            client_profile = getattr(request.user, 'client_profile', None)
-            if not client_profile:
-                return Response({'detail': " client introuvable."}, status=status.HTTP_400_BAD_REQUEST)
-
+            offre = serializer.validated_data['offre']
+            evenement = serializer.validated_data['evenement']
             quantity = serializer.validated_data['quantity']
-            for _ in range(quantity):
-                ticket = Ticket(
-                    client=client_profile,
-                    evenement=evenement,
-                    offre=offre,
-                    statut='valide'
-                )
-                ticket.save()
-                tickets_created.append(ticket.id)  # ou sérialiser pour renvoyer plus d'infos
 
-        return Response({"tickets": tickets_created}, status=status.HTTP_201_CREATED)
+            for _ in range(quantity):
+                if evenement.nb_place_restante >= offre.nb_personne:
+                    evenement.nb_place_restante -= offre.nb_personne
+                    evenement.save()
+                    ticket = Ticket(
+                        client=client_profile,
+                        evenement=evenement,
+                        offre=offre,
+                        statut='valide'
+                    )
+                    ticket.save()
+                    tickets_created.append(ticket)
+
+                else:
+                    tickets_uncreated.append({
+                        "offre": offre.libelle,
+                        "evenement": evenement.description,
+                        "reason": "Places insuffisantes"
+                    })
+
+        serrialised_ticket = TicketSerializer(tickets_created, many=True)
+        return Response(
+            {"tickets": serrialised_ticket.data, "erreurs": tickets_uncreated},
+            status=status.HTTP_201_CREATED
+        )
