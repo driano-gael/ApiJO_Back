@@ -1,8 +1,9 @@
+from api.models import Ticket
 from api.serializers import TicketSerializer, OffreSerializer, EvenementSerializer
 from rest_framework.permissions import IsAuthenticated
 from api.serializers.ticket import PanierItemSerializer
-from rest_framework import generics
-
+from rest_framework import generics, status
+from rest_framework.response import Response
 
 class TicketListView(generics.ListAPIView):
     """
@@ -61,15 +62,6 @@ class TicketDetailView(generics.RetrieveAPIView):
         :rtype: QuerySet[Ticket]
         """
         return Ticket.objects.filter(client=self.request.user.client_profile)
-
-
-
-
-from rest_framework import generics, status
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from django.db import transaction
-from api.models import Ticket
 
 
 class TicketBatchCreateView(generics.GenericAPIView):
