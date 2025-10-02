@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
     'authentication.apps.AuthenticationConfig',
+    'payment.apps.PaymentConfig',
     # swagger
     'drf_spectacular',
 ]
