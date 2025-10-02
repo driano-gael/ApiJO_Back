@@ -20,4 +20,5 @@ urlpatterns = [
 
     # Routes d'authentification (login, logout, registration, token, etc.)
     path('api/auth/', include('authentication.urls')),
+    path('api/payment/', include('payment.urls')),
 ]
