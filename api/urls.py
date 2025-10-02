@@ -18,7 +18,7 @@ from api.views.discipline import *
 from api.views.epreuve import *
 from api.views.evenement import *
 from api.views.offre import *
-from api.views.ticket import TicketListView, TicketDetailView, TicketBatchCreateView
+from api.views.ticket import *
 
 urlpatterns = [
     # LIEU - Gestion des lieux sportifs
