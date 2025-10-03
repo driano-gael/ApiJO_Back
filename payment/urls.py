@@ -1,7 +1,7 @@
 from django.urls import path
-from payment.views import MockStripePaymentView
 
+from payment.views import MockPaymentView
 
 urlpatterns = [
-    path('check/', MockStripePaymentView.as_view(), name='checkout-payment'),
+    path('check/', MockPaymentView.as_view(), name='checkout-payment'),
 ]

@@ -1,5 +1,5 @@
 import uuid
-class StripeGatewayMock:
+class PaymentGatewayMock:
     """
     Simule un appel à un service de paiement
     """

@@ -16,7 +16,6 @@ class TicketSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class PanierItemSerializer(serializers.Serializer):
     offreId = serializers.PrimaryKeyRelatedField(queryset=Offre.objects.all(), source="offre")
     evenementId = serializers.PrimaryKeyRelatedField(queryset=Evenement.objects.all(), source="evenement")
