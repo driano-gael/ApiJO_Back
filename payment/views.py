@@ -38,8 +38,6 @@ class MockStripePaymentView(APIView):
             "gateway_response": result
         }
 
-        # Sérialisation de la réponse
         response_serializer = MockPaymentResponseSerializer(response_data)
-        http_status = status.HTTP_200_OK if response_data["success"] else status.HTTP_400_BAD_REQUEST
 
-        return Response(response_serializer.data, status=http_status)
+        return Response(response_serializer.data, status=status.HTTP_200_OK)
