@@ -13,7 +13,14 @@ class TicketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ticket
-        fields = '__all__'
+        fields = [
+            'id',
+            'client',
+            'evenement',
+            'offre',
+            'date_achat',
+            'statut',
+        ]
 
 
 class PanierItemSerializer(serializers.Serializer):

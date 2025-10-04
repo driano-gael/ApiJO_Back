@@ -45,6 +45,7 @@ class MockPaymentView(APIView):
             "errors": []
         }
 
+        tickets = []
         if payment_intent["status"] == "requires_confirmation" and items:
             try:
                 with transaction.atomic():
@@ -57,12 +58,13 @@ class MockPaymentView(APIView):
                 confirmed = payment_service.confirm_payment(payment_intent["transaction_id"])
                 response_data["success"] = True
                 response_data["gateway_response"] = confirmed
-                response_data["tickets"] = TicketSerializer(tickets, many=True).data
+
 
             except ValueError as e:
                 refund = payment_service.refund(payment_intent["transaction_id"])
                 response_data["errors"].append({"reason": str(e)})
                 response_data["gateway_response"] = refund
 
+        response_data["tickets"] = TicketSerializer(tickets, many=True).data
         response_serializer = MockPaymentResponseSerializer(response_data)
         return Response(response_serializer.data, status=status.HTTP_200_OK)
