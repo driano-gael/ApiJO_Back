@@ -35,7 +35,6 @@ class MockPaymentView(APIView):
 
         payment_service = PaymentService()
 
-        # 1️⃣ Création du PaymentIntent
         payment_intent = payment_service.create_payment_intent(amount, force_failed)
 
         response_data = {
