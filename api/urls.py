@@ -57,7 +57,9 @@ urlpatterns = [
     path('offre/update/<int:pk>/', OffreUpdateView.as_view(), name='offre-update'),
     path('offre/delete/<int:pk>/', OffreDeleteView.as_view(), name='offre-delete'),
 
-    path('ticket/', TicketListView.as_view(), name='ticket-list'),# Ticket
+    path('ticket-client/', TicketClientListView.as_view(), name='ticket-client-list'),
+    path('ticket/', TicketListView.as_view(), name='ticket-list'),
+    path('ticket-client/<int:pk>/', TicketClientDetailView.as_view(), name='ticket-client-detail'),
     path('ticket/<int:pk>/', TicketDetailView.as_view(), name='ticket-detail'),
     path('ticket/create/', TicketBatchCreateView.as_view(), name='tickets-create'),
 ]

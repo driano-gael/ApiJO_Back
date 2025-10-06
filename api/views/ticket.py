@@ -5,7 +5,10 @@ from api.serializers.ticket import PanierItemSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-class TicketListView(generics.ListAPIView):
+from authentication.permissions import IsAdmin
+
+
+class TicketClientListView(generics.ListAPIView):
     """
     Liste les tickets appartenant à l'utilisateur connecté.
 
@@ -34,7 +37,33 @@ class TicketListView(generics.ListAPIView):
         """
         return Ticket.objects.filter(client=self.request.user.client_profile).order_by("date_achat")
 
-class TicketDetailView(generics.RetrieveAPIView):
+class TicketListView(generics.ListAPIView):
+    """
+    Liste les tickets.
+
+    Cette vue renvoie touts les tickets,
+    triés par date d'achat (du plus ancien au plus récent).
+    L'accès est restreint aux Administrateurs.
+
+    :cvar serializer_class: Sérialiseur utilisé pour convertir les tickets en JSON.
+    :type serializer_class: TicketSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue.
+    :type permission_classes: list[rest_framework.permissions.BasePermission]
+    """
+
+    serializer_class = TicketSerializer
+    permission_classes = [IsAdmin]
+
+    def get_queryset(self):
+        """
+        Retourne les tickets.
+
+        :return: Liste des tickets de l'utilisateur connecté.
+        :rtype: QuerySet[Ticket]
+        """
+        return Ticket.objects.all().order_by("date_achat")
+
+class TicketClientDetailView(generics.RetrieveAPIView):
     """
     Récupère les détails d'un ticket spécifique appartenant à l'utilisateur connecté.
 
@@ -63,6 +92,33 @@ class TicketDetailView(generics.RetrieveAPIView):
         """
         return Ticket.objects.filter(client=self.request.user.client_profile)
 
+class TicketDetailView(generics.RetrieveAPIView):
+    """
+    Récupère les détails d'un ticket.
+
+    Cette vue permet les détails
+    L'accès est restreint aux administrateurs.
+
+    :cvar serializer_class: Sérialiseur utilisé pour convertir le ticket en JSON.
+    :type serializer_class: TicketSerializer
+    :cvar permission_classes: Permissions requises pour accéder à la vue.
+    :type permission_classes: list[rest_framework.permissions.BasePermission]
+    """
+
+    serializer_class = TicketSerializer
+    permission_classes = [IsAdmin]
+
+    def get_queryset(self):
+        """
+        Retourne les tickets de l'utilisateur actuellement connecté.
+
+        Cette méthode filtre le queryset des tickets pour ne conserver
+        que ceux associés à `request.user`.
+
+        :return: Liste des tickets de l'utilisateur connecté.
+        :rtype: QuerySet[Ticket]
+        """
+        return Ticket.objects.all()
 
 class TicketBatchCreateView(generics.GenericAPIView):
     """
