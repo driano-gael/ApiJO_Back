@@ -5,10 +5,12 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import serializers
 
 from qr_code_service.models import QrCode
-from .serializers import QRCodeSerializer
+from .serializers import QRCodeSerializer, TicketIdSerializer
 from api.models import Ticket
+
 
 class QRCodeCreateByTicket(APIView):
     permission_classes = [IsAuthenticated]
@@ -16,7 +18,7 @@ class QRCodeCreateByTicket(APIView):
 
 
     @extend_schema(
-        request="ticket_id: integer",
+        request=TicketIdSerializer,
         responses=QRCodeSerializer
     )
     def post(self, request):

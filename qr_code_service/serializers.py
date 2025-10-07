@@ -34,3 +34,7 @@ class QRCodeSerializer(serializers.ModelSerializer):
         model = QrCode
         fields = ['id', 'data', 'ticket', 'ticket_id']
 
+
+class TicketIdSerializer(serializers.Serializer):
+    ticket_id = serializers.IntegerField()
+
