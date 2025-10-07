@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from api.models import Ticket
+from api.serializers import TicketSerializer
 from qr_code_service.models import QrCode
 
 
@@ -15,6 +17,12 @@ class QRCodeSerializer(serializers.ModelSerializer):
         created_at (datetime): Date et heure de création du QR code
         updated_at (datetime): Date et heure de la dernière mise à jour du QR code
     """
+    ticket = TicketSerializer(read_only=True)
+    ticket_id = serializers.PrimaryKeyRelatedField(
+        queryset=Ticket.objects.all(),
+        write_only=True,
+        source='ticket',
+    )
     class Meta:
         """
         Configuration du sérialiseur.
@@ -24,4 +32,5 @@ class QRCodeSerializer(serializers.ModelSerializer):
             fields (str): Champs inclus dans la sérialisation
         """
         model = QrCode
-        fields = '__all__'
+        fields = ['id', 'data', 'ticket', 'ticket_id']
+

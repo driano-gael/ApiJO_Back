@@ -1,3 +1,4 @@
+import json
 from io import BytesIO
 
 from django.core.files.base import ContentFile
@@ -28,9 +29,10 @@ class QRCodeCreateByTicket(APIView):
         ticket_id = request.data.get('ticket_id')
         if not ticket_id:
             return Response({'message': 'ticket_id requis'}, status=400)
-        ticket = Ticket.objects.get(id=ticket_id)
-        if not ticket:
-            return Response({'message': 'ticket_id invalide'}, status=400)
+        try:
+            ticket = Ticket.objects.get(id=ticket_id)
+        except Ticket.DoesNotExist:
+            return Response({'message': 'ticket_id invalide'}, status=status.HTTP_400_BAD_REQUEST)
 
         if ticket.client != request.user.client_profile:
             return Response(
@@ -47,11 +49,11 @@ class QRCodeCreateByTicket(APIView):
         qr_image = make(qr_data)
         buffer = BytesIO()
         qr_image.save(buffer, format='PNG')
-        image_file = ContentFile(buffer.getvalue(), f"ticket_{ticket.id}.png")
+        data=json.dumps(qr_data)
 
         qrcode_obj = QrCode.objects.create(
             ticket=ticket,
-            image=image_file
+            data=data
         )
 
         serializer = QRCodeSerializer(qrcode_obj)
