@@ -3,7 +3,7 @@ from api.models import Ticket
 
 
 class QrCode(models.Model):
-    data = models.CharField(max_length=255, help_text="Données encodées dans le QR code")
+    data = models.BinaryField(help_text="Données encodées dans le QR code")
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE, related_name='qrcodes', help_text="Ticket associé à ce QR code")
 
     def __str__(self):

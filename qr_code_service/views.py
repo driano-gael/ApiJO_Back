@@ -1,20 +1,14 @@
-import json
+import qrcode
 from io import BytesIO
-
-from django.core.files.base import ContentFile
 from drf_spectacular.utils import extend_schema
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-
-from qrcode import make
+from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.models import Ticket
+
 from qr_code_service.models import QrCode
 from .serializers import QRCodeSerializer
-from rest_framework.response import Response
-from rest_framework import status
-
-
-# Create your views here.
+from api.models import Ticket
 
 class QRCodeCreateByTicket(APIView):
     permission_classes = [IsAuthenticated]
@@ -45,15 +39,15 @@ class QRCodeCreateByTicket(APIView):
             serializer = QRCodeSerializer(qr_code)
             return Response(serializer.data, status=200)
 
-        qr_data = {'ticket_key': ticket.key}
-        qr_image = make(qr_data)
+        qr_image = qrcode.make(ticket.key)
         buffer = BytesIO()
-        qr_image.save(buffer, format='PNG')
-        data=json.dumps(qr_data)
+        qr_image.save(buffer, format="PNG")
+        qr_data = buffer.getvalue()
+
 
         qrcode_obj = QrCode.objects.create(
             ticket=ticket,
-            data=data
+            data=qr_data
         )
 
         serializer = QRCodeSerializer(qrcode_obj)
