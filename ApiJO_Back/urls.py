@@ -22,4 +22,6 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/payment/', include('payment.urls')),
     path('api/qr_code_service/', include('qr_code_service.urls')),
+
+    path('api/users/', include('users.urls')),
 ]
