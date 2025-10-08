@@ -1,3 +1,5 @@
+import base64
+
 import qrcode
 from io import BytesIO
 from drf_spectacular.utils import extend_schema
@@ -44,10 +46,10 @@ class QRCodeCreateByTicket(APIView):
         qr_image = qrcode.make(ticket.key)
         buffer = BytesIO()
         qr_image.save(buffer, format="PNG")
-        qr_data = buffer.getvalue()
+        qr_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
 
-        qrcode_obj = QrCode.objects.create(
+        qrcode_obj, created = QrCode.objects.get_or_create(
             ticket=ticket,
             data=qr_data
         )
