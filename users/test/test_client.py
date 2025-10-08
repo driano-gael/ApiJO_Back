@@ -1,7 +1,8 @@
 from django.test import TestCase
 from users.models.base_user import User
 from users.models.client import ClientProfile
-from users.serializers.client import ClientSerializer
+from users.serializers.client import ClientSerializer, ClientFullSerializer
+
 
 class ClientModelSerializerTest(TestCase):
     def setUp(self):
@@ -14,7 +15,7 @@ class ClientModelSerializerTest(TestCase):
 
     def test_client_serializer_output(self):
         client = ClientProfile.objects.create(user=self.user, nom='Durand', prenom='Alice', telephone='0601020304')
-        serializer = ClientSerializer(instance=client)
+        serializer = ClientFullSerializer(instance=client)
         self.assertEqual(serializer.data['nom'], 'Durand')
         self.assertIn('cle_chiffree', serializer.data)
         self.assertEqual(serializer.data['cle_chiffree'], client.cle_chiffree)
