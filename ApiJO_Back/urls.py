@@ -21,4 +21,5 @@ urlpatterns = [
     # Routes d'authentification (login, logout, registration, token, etc.)
     path('api/auth/', include('authentication.urls')),
     path('api/payment/', include('payment.urls')),
+    path('api/qr_code_service/', include('qr_code_service.urls')),
 ]

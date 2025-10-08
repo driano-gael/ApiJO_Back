@@ -23,13 +23,11 @@ class ClientSerializer(serializers.ModelSerializer):
     :vartype prenom: str
     :ivar telephone: Numéro de téléphone du client
     :vartype telephone: str
-    :ivar cle_chiffree: Clé chiffrée générée automatiquement (lecture seule)
-    :vartype cle_chiffree: str
     """
     class Meta:
         model = ClientProfile
-        fields = ['id', 'user', 'nom', 'prenom', 'telephone', 'cle_chiffree']
-        read_only_fields = ['id', 'user', 'cle_chiffree']
+        fields = ['id', 'user', 'nom', 'prenom', 'telephone']
+        read_only_fields = ['id', 'user']
 
     def create(self, validated_data):
         """
@@ -41,3 +39,24 @@ class ClientSerializer(serializers.ModelSerializer):
         :rtype: ClientProfile
         """
         return super().create(validated_data)
+
+
+class ClientFullSerializer(serializers.ModelSerializer):
+    """
+    Sérialiseur pour le modèle ClientProfile.
+
+    :ivar id: Identifiant unique du profil client (lecture seule)
+    :vartype id: int
+    :ivar user: Utilisateur associé au profil client (lecture seule)
+    :vartype user: User
+    :ivar nom: Nom de famille du client
+    :vartype nom: str
+    :ivar prenom: Prénom du client
+    :vartype prenom: str
+    :ivar telephone: Numéro de téléphone du client
+    :vartype telephone: str
+    """
+    class Meta:
+        model = ClientProfile
+        fields = ['id', 'user', 'nom', 'prenom', 'telephone', 'cle_chiffree']
+        read_only_fields = ['id', 'user', 'cle_chiffree']
