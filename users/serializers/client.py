@@ -7,6 +7,7 @@ pour l'API REST.
 
 from rest_framework import serializers
 from users.models.client import ClientProfile
+from users.serializers import UserSerializer
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -56,6 +57,7 @@ class ClientFullSerializer(serializers.ModelSerializer):
     :ivar telephone: Numéro de téléphone du client
     :vartype telephone: str
     """
+    user = UserSerializer(read_only=True)
     class Meta:
         model = ClientProfile
         fields = ['id', 'user', 'nom', 'prenom', 'telephone', 'cle_chiffree']
