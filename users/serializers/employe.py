@@ -7,6 +7,7 @@ pour l'API REST.
 
 from rest_framework import serializers
 from users.models.employe import EmployeProfile
+from users.serializers import UserSerializer
 
 
 class EmployeSerializer(serializers.ModelSerializer):
@@ -26,6 +27,7 @@ class EmployeSerializer(serializers.ModelSerializer):
     :ivar identifiant_telephone: Identifiant téléphonique professionnel
     :vartype identifiant_telephone: str
     """
+    user = UserSerializer(read_only=True)
     class Meta:
         model = EmployeProfile
         fields = ['id', 'user', 'nom', 'prenom', 'matricule', 'identifiant_telephone']
