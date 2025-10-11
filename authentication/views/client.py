@@ -9,6 +9,8 @@ des nouveaux clients via l'API REST.
 
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
+
+from authentication.permissions import IsAdmin
 from authentication.serializers.client import ClientRegisterSerializer
 from users.models.base_user import User
 
