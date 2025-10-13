@@ -13,6 +13,8 @@ Cette API REST permet de gérer tous les aspects des Jeux Olympiques :
 - **Gestion des événements sportifs** : disciplines, épreuves, événements et lieux
 - **Système d'authentification** : inscription et connexion des utilisateurs avec gestion des rôles
 - **Gestion des utilisateurs** : profils clients et employés
+- **Système de paiement** : gestion des transactions et création automatique de tickets
+- **Service QR Code** : génération et validation des codes QR pour les billets
 - **Offres commerciales** : packages et billets
 
 Architecture
@@ -24,6 +26,8 @@ L'API est construite avec Django REST Framework et utilise :
 - **Base de données PostgreSQL** pour la persistance
 - **Permissions granulaires** selon les rôles utilisateurs
 - **Validation avancée** des données (emails, mots de passe sécurisés)
+- **Système de paiement simulé** pour les transactions
+- **Génération de QR codes** pour la validation des billets
 
 .. toctree::
    :maxdepth: 1
@@ -32,6 +36,8 @@ L'API est construite avec Django REST Framework et utilise :
    api/index
    authentication/index
    users/index
+   payment/index
+   qr_code_service/index
 
 .. toctree::
    :maxdepth: 1

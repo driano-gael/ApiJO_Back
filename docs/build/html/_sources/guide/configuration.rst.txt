@@ -4,15 +4,15 @@ Configuration
 Ce guide détaille la configuration de l'API ApiJO après installation.
 
 Configuration Django
-------------------
+--------------------
 
 Fichier settings.py
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 Les principaux paramètres à configurer dans ApiJO_Back/settings.py : les paramètres sont à configurer dans le .env
 
 Base de données
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 Modification du moteur de Base de données si nécessaire (PostgreSQL recommandé) :
 
@@ -30,7 +30,7 @@ Modification du moteur de Base de données si nécessaire (PostgreSQL recommand�
     }
 
 Authentification JWT
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -44,7 +44,7 @@ Authentification JWT
     }
 
 CORS (Cross-Origin Resource Sharing)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: python
 
@@ -56,13 +56,13 @@ CORS (Cross-Origin Resource Sharing)
     CORS_ALLOW_CREDENTIALS = True
 
 Configuration des modèles
------------------------
+-------------------------
 
 Paramètres par défaut des modèles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Événements
-^^^^^^^^^
+^^^^^^^^^^^
 
 Les événements ont des paramètres par défaut configurables :
 
@@ -70,7 +70,7 @@ Les événements ont des paramètres par défaut configurables :
 * Gestion automatique des places restantes
 
 Configuration des rôles utilisateurs
---------------------------------
+-------------------------------------
 
 L'API supporte trois rôles principaux :
 
@@ -98,10 +98,10 @@ Admin
 * Utilisation dans les vues : [isAdmin]
 
 Configuration des validateurs
---------------------------
+------------------------------
 
 Validation des mots de passe
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Configuration du StrongPasswordValidator :
 
@@ -121,12 +121,12 @@ Configuration du StrongPasswordValidator :
     ]
 
 Validation des emails
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Utilise le EmailValidator intégré avec vérifications anti-spam.
 
 Configuration de l'API REST
-------------------------
+---------------------------
 
 .. code-block:: python
 
@@ -145,7 +145,7 @@ Configuration de l'API REST
     }
 
 Configuration des médias
----------------------
+------------------------
 
 .. code-block:: python
 
@@ -156,7 +156,7 @@ Configuration des médias
     FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 Configuration de production
-------------------------
+---------------------------
 
 .. code-block:: env
 
@@ -174,7 +174,7 @@ Configuration de production
     CORS_ALLOWED_ORIGINS=https://votredomaine1.com,https://votredomaine2.com
 
 Tests de configuration
--------------------
+----------------------
 
 .. code-block:: bash
 
@@ -191,7 +191,7 @@ Tests de configuration
     python manage.py test
 
 Problèmes de configuration courants
---------------------------------
+-----------------------------------
 
 * Erreur 500 : Vérifiez DEBUG=True en développement
 * CORS : Ajoutez votre frontend aux CORS_ALLOWED_ORIGINS
