@@ -9,6 +9,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import serializers
 
+from api.serializers import TicketSerializer
+from authentication.permissions import IsAdminOrEmploye
 from qr_code_service.models import QrCode
 from .serializers import QRCodeSerializer, TicketIdSerializer
 from api.models import Ticket
@@ -56,3 +58,29 @@ class QRCodeCreateByTicket(APIView):
 
         serializer = QRCodeSerializer(qrcode_obj)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+class TicketByKeyView(APIView):
+    """
+    Vue qui reçoit une clé de ticket (key) et renvoie le ticket correspondant.
+    Accessible uniquement aux employés authentifiés.
+    """
+    permission_classes = [IsAdminOrEmploye]
+
+    @extend_schema(
+        request=None,
+        responses=TicketSerializer,
+        description="Récupère un ticket à partir de sa clé QR"
+    )
+    def get(self, request, key):
+        try:
+            ticket = Ticket.objects.get(key=key)
+        except Ticket.DoesNotExist:
+            return Response(
+                {"message": "Ticket introuvable"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = TicketSerializer(ticket)
+        return Response(serializer.data, status=status.HTTP_200_OK)

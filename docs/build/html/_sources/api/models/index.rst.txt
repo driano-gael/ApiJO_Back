@@ -8,6 +8,7 @@ Les modèles définissent les structures de données pour les entités des Jeux 
 - **Evenement** : Sessions avec gestion des places
 - **Epreuve** : Compétitions dans les disciplines
 - **Offre** : Packages commerciaux
+- **Ticket** : Billets d'entrée pour les événements
 
 .. toctree::
    :maxdepth: 2
@@ -18,3 +19,4 @@ Les modèles définissent les structures de données pour les entités des Jeux 
    evenement
    epreuve
    offre
+   ticket
